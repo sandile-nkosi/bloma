@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
 const mongoose = require('mongoose');
-const db = require('./config/database').MongoURI;
+const database = require('./config/database').MongoURI;
 const flash = require('connect-flash');
 const passport = require('passport');
 const session = require('express-session');
@@ -37,7 +37,7 @@ app.use((req, res, next) => {
 app.use('/', require('./routes/base.routes'));
 app.use('/student', require('./routes/student.routes'));
 
-mongoose.connect(db).then(()=>{
+mongoose.connect(database).then(()=>{
     console.log('Database connection established');
 }).catch((err)=>{
     console.error('Database connection error', err);
