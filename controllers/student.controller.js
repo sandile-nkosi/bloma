@@ -45,7 +45,10 @@ function register(req, res) {
     studentNum: req.body.studentNum,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
+    gender: req.body.gender,
+    phone: req.body.phone
   };
+
 
   Student.register(new Student(student), req.body.password, (err, user) => {
     if (err) {
@@ -94,7 +97,7 @@ async function apply(req, res){
       residenceOne: req.body.residenceOne,
       residenceTwo: req.body.residenceTwo,
       average: req.body.average,
-      documentPath: academicRecord.path,
+      documentPath: academicRecord.path
     };
 
     const newApplication = new Application(application);

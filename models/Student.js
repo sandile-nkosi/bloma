@@ -3,25 +3,17 @@ const passportLocalMongoose = require("passport-local-mongoose");
 const passport = require("passport");
 
 const StudentSchema = new mongoose.Schema({
-  email: {
-    type: String,
-  },
-  studentNum: {
-    type: Number,
-  },
-  firstName: {
-    type: String,
-  },
-  lastName: {
-    type: String,
-  },
-  gender: {
-    type: String,
-  },
+  email: String,
+  password: String,
+  studentNum: String,
+  firstName: String,
+  lastName: String,
+  gender: String,
   applied: {
     type: Boolean,
     default: false
-  }
+  },
+  phone: String
 });
 
 StudentSchema.plugin(passportLocalMongoose);

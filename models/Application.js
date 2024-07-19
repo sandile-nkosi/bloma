@@ -1,35 +1,21 @@
 const mongoose = require("mongoose");
 
-var today = new Date();
-
 const ApplicationSchema = new mongoose.Schema(
   {
-    studentNum: {
-      type: Number,
-    },
-    studentName: {
-      type: String,
-    },
-    residenceOne: {
-      type: String
-    },
-    residenceTwo: {
-      type: String
-    },
+    studentNum: String,
+    studentName: String,
+    residenceOne: String,
+    residenceTwo: String,
     status: {
       type: String,
       enum: ["Submitted", "In Progress", "Admitted"],
       default: "Submitted",
     },
-    average: {
-      type: Number,
-    },
-    documentPath: {
-      type: String
-    },
+    average: String,
+    documentPath: String,
     createdAt: {
       type: Date,
-      default: today
+      default: new Date()
     }
   },
 );
