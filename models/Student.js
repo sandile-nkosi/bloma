@@ -5,7 +5,7 @@ const passport = require("passport");
 const StudentSchema = new mongoose.Schema({
   email: String,
   password: String,
-  studentNum: String,
+  studentNum: Number,
   firstName: String,
   lastName: String,
   gender: String,
@@ -13,7 +13,11 @@ const StudentSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
-  phone: String
+  phone: String,
+  avatar: {
+    type: String,
+    default: '/images/user.png'
+  }
 });
 
 StudentSchema.plugin(passportLocalMongoose);

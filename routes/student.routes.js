@@ -1,7 +1,7 @@
 const express = require('express');
 const studentController = require('../controllers/student.controller');
 const router = express.Router();
-const documentUpload = require('../middleware/document.upload');
+const documentUpload = require('../middleware/student.document.upload');
 
 router.get('/login', studentController.getLogin);
 router.get('/logout', studentController.logout);

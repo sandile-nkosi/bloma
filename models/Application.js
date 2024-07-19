@@ -2,16 +2,15 @@ const mongoose = require("mongoose");
 
 const ApplicationSchema = new mongoose.Schema(
   {
-    studentNum: String,
+    studentNum: Number,
     studentName: String,
     residenceOne: String,
     residenceTwo: String,
     status: {
       type: String,
-      enum: ["Submitted", "In Progress", "Admitted"],
       default: "Submitted",
     },
-    average: String,
+    average: Number,
     documentPath: String,
     createdAt: {
       type: Date,

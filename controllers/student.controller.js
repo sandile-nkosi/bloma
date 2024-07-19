@@ -1,8 +1,7 @@
 const Student = require("../models/Student");
 const Application = require("../models/Application");
 const passport = require("passport");
-const database = require('../config/database').MongoURI;
-
+const database = require("../config/database").MongoURI;
 
 function getLogin(req, res) {
   if (req.isAuthenticated()) {
@@ -42,13 +41,12 @@ function logout(req, res) {
 function register(req, res) {
   const student = {
     username: req.body.username,
-    studentNum: req.body.studentNum,
+    studentNum: Number(req.body.studentNum),
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     gender: req.body.gender,
-    phone: req.body.phone
+    phone: req.body.phone,
   };
-
 
   Student.register(new Student(student), req.body.password, (err, user) => {
     if (err) {
@@ -64,8 +62,7 @@ function register(req, res) {
 
 function getDashboard(req, res) {
   if (req.isAuthenticated()) {
-    let student = req.user;
-
+    const student = req.user;
     res.render("dashboard", { student: student });
   } else {
     res.redirect("/student/login");
@@ -76,43 +73,42 @@ function getApply(req, res) {
   const student = req.user;
 
   if (req.isAuthenticated()) {
-    if(student.applied == false){
+    if (student.applied == false) {
       res.render("apply");
     } else {
       // already applied
       res.redirect("/student/dashboard");
-    } 
+    }
   } else {
     res.redirect("/student/login");
   }
 }
 
-async function apply(req, res){
-    const student = req.user;
-    const academicRecord = req.file;
+async function apply(req, res) {
+  const student = req.user;
+  const academicRecord = req.file;
 
-    const application = {
-      studentNum: student.studentNum,
-      studentName: student.firstName +' '+ student.lastName,
-      residenceOne: req.body.residenceOne,
-      residenceTwo: req.body.residenceTwo,
-      average: req.body.average,
-      documentPath: academicRecord.path
-    };
+  const application = {
+    studentNum: Number(student.studentNum),
+    studentName: student.firstName + " " + student.lastName,
+    residenceOne: req.body.residenceOne,
+    residenceTwo: req.body.residenceTwo,
+    average: Number(req.body.average),
+    documentPath: academicRecord.path,
+  };
 
-    const newApplication = new Application(application);
+  const newApplication = new Application(application);
 
-    try {
-      await student.updateOne({
-        applied: true
-      });
-      await newApplication.save(); 
-      res.redirect('/student/dashboard');
-    } catch (err) {
-      console.log(err);
-    }
-    
-};
+  try {
+    await student.updateOne({
+      applied: true,
+    });
+    await newApplication.save();
+    res.redirect("/student/dashboard");
+  } catch (err) {
+    console.log(err);
+  }
+}
 
 function getRegister(req, res) {
   if (req.isAuthenticated()) {
@@ -130,5 +126,5 @@ module.exports = {
   login: login,
   logout: logout,
   register: register,
-  apply: apply
+  apply: apply,
 };
