@@ -1,7 +1,6 @@
 const Student = require("../models/Student");
 const Application = require("../models/Application");
 const passport = require("passport");
-const database = require("../config/database").MongoURI;
 
 function getLogin(req, res) {
   if (req.isAuthenticated()) {
@@ -30,27 +29,25 @@ function login(req, res, next) {
 
 async function updateStudent(req, res) {
   const studentId = req.user._id;
-  const { firstName, lastName, phone, avatar } = req.body;
+  const { email, phone } = req.body;
 
   const updateStudent = req.body;
-  try {
-    await Student.findOneAndUpdate(
-      {
-        _id: studentId,
-      },
-      {
-        $set: updateStudent,
-      },
-      {
-        new: true,
-        runValidators: true,
-      }
-    );
 
-    res.redirect("/student/dashboard");
-  } catch (err) {
-    console.log(err);
-  }
+  await Student.findOneAndUpdate(
+    {
+      _id: studentId,
+    },
+    {
+      $set: updateStudent,
+    },
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
+
+  res.redirect("/student/dashboard");
+  console.log(err);
 }
 
 function logout(req, res) {
@@ -71,6 +68,7 @@ function register(req, res) {
     lastName: req.body.lastName,
     gender: req.body.gender,
     phone: req.body.phone,
+    avatar: req.file.path,
   };
 
   Student.register(new Student(student), req.body.password, (err, user) => {
@@ -85,10 +83,17 @@ function register(req, res) {
   });
 }
 
-function getDashboard(req, res) {
+async function getDashboard(req, res) {
   if (req.isAuthenticated()) {
     const student = req.user;
-    res.render("dashboard", { student: student });
+    const studentApplication = await Application.findOne({
+      createdBy: student._id,
+    }).exec();
+
+    res.render("dashboard", {
+      student: student,
+      studentApplication: studentApplication,
+    });
   } else {
     res.redirect("/student/login");
   }
@@ -103,11 +108,11 @@ function getRegister(req, res) {
 }
 
 module.exports = {
-  getLogin: getLogin,
-  getDashboard: getDashboard,
-  getRegister: getRegister,
-  login: login,
-  logout: logout,
-  register: register,
-  updateStudent: updateStudent,
+  getLogin,
+  getDashboard,
+  getRegister,
+  login,
+  logout,
+  register,
+  updateStudent,
 };

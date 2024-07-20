@@ -1,5 +1,4 @@
 const Application = require("../models/Application");
-const database = require("../config/database").MongoURI;
 
 function getApply(req, res) {
   const student = req.user;
@@ -27,6 +26,7 @@ async function apply(req, res) {
     residenceTwo: req.body.residenceTwo,
     average: Number(req.body.average),
     documentPath: academicRecord.path,
+    createdBy: req.user._id
   };
 
   const newApplication = new Application(application);
@@ -42,7 +42,8 @@ async function apply(req, res) {
   }
 }
 
+
 module.exports = {
-  getApply: getApply,
-  apply: apply,
+  getApply,
+  apply
 };

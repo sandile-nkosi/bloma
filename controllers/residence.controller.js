@@ -33,6 +33,6 @@ async function newResidence(req, res){
 
 
 module.exports = {
-  getResidences: getResidences,
-  newResidence: newResidence
+  getResidences,
+  newResidence
 }; 

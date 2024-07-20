@@ -12,6 +12,6 @@ function getAbout(req, res){
 
 
 module.exports = {
-  getIndex: getIndex,
-  getAbout: getAbout
+  getIndex,
+  getAbout
 };

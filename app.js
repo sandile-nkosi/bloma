@@ -12,8 +12,10 @@ const createSessionConfig = require('./config/session');
 
 const app = express();
 
-app.use(express.static("public"));
 app.set('view engine', 'ejs');
+
+app.use(express.static("public"));
+app.use('/student/student-data', express.static('student-data'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(createSessionConfig());
