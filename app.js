@@ -37,6 +37,7 @@ app.use((req, res, next) => {
 app.use('/', require('./routes/base.routes'));
 app.use('/student', require('./routes/student.routes'));
 app.use('/residences', require('./routes/residence.routes'));
+app.use('/application', require('./routes/application.routes'));
 
 mongoose.connect(database).then(()=>{
     console.log('Database connection established');

@@ -8,6 +8,7 @@ const ApplicationSchema = new mongoose.Schema(
     residenceTwo: String,
     status: {
       type: String,
+      enum: ["Submitted", "In Progress", "Declined", "Accepted"],
       default: "Submitted",
     },
     average: Number,
@@ -15,7 +16,11 @@ const ApplicationSchema = new mongoose.Schema(
     createdAt: {
       type: Date,
       default: new Date()
-    }
+    },
+    createdBy: {
+      type: mongoose.Types.ObjectId,
+      ref: 'Student'
+    },
   },
 );
 

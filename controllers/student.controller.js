@@ -28,6 +28,31 @@ function login(req, res, next) {
   });
 }
 
+async function updateStudent(req, res) {
+  const studentId = req.user._id;
+  const { firstName, lastName, phone, avatar } = req.body;
+
+  const updateStudent = req.body;
+  try {
+    await Student.findOneAndUpdate(
+      {
+        _id: studentId,
+      },
+      {
+        $set: updateStudent,
+      },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+
+    res.redirect("/student/dashboard");
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 function logout(req, res) {
   req.logout((err) => {
     if (err) {
@@ -69,47 +94,6 @@ function getDashboard(req, res) {
   }
 }
 
-function getApply(req, res) {
-  const student = req.user;
-
-  if (req.isAuthenticated()) {
-    if (student.applied == false) {
-      res.render("apply");
-    } else {
-      // already applied
-      res.redirect("/student/dashboard");
-    }
-  } else {
-    res.redirect("/student/login");
-  }
-}
-
-async function apply(req, res) {
-  const student = req.user;
-  const academicRecord = req.file;
-
-  const application = {
-    studentNum: Number(student.studentNum),
-    studentName: student.firstName + " " + student.lastName,
-    residenceOne: req.body.residenceOne,
-    residenceTwo: req.body.residenceTwo,
-    average: Number(req.body.average),
-    documentPath: academicRecord.path,
-  };
-
-  const newApplication = new Application(application);
-
-  try {
-    await student.updateOne({
-      applied: true,
-    });
-    await newApplication.save();
-    res.redirect("/student/dashboard");
-  } catch (err) {
-    console.log(err);
-  }
-}
-
 function getRegister(req, res) {
   if (req.isAuthenticated()) {
     res.redirect("/");
@@ -121,10 +105,9 @@ function getRegister(req, res) {
 module.exports = {
   getLogin: getLogin,
   getDashboard: getDashboard,
-  getApply: getApply,
   getRegister: getRegister,
   login: login,
   logout: logout,
   register: register,
-  apply: apply,
+  updateStudent: updateStudent,
 };
