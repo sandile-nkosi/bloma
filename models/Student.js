@@ -17,7 +17,14 @@ const StudentSchema = new mongoose.Schema({
   avatar: {
     type: String,
     default: '/images/user.png'
+  },
+  isAdmin: {
+    type: Boolean,
+    default: false
   }
+},
+{
+  timestamps: true
 });
 
 StudentSchema.plugin(passportLocalMongoose);

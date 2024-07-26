@@ -1,11 +1,13 @@
 const Application = require("../models/Application");
+const Residence = require("../models/Residence");
 
-function getApply(req, res) {
+async function getApply(req, res) {
+  const residences = await Residence.find();
   const student = req.user;
 
   if (req.isAuthenticated()) {
     if (student.applied == false) {
-      res.render("apply");
+      res.render("student/apply", { residences: residences });
     } else {
       // already applied
       res.redirect("/student/dashboard");
@@ -24,6 +26,7 @@ async function apply(req, res) {
     studentName: student.firstName + " " + student.lastName,
     residenceOne: req.body.residenceOne,
     residenceTwo: req.body.residenceTwo,
+    residenceThree: req.body.residenceThree,
     average: Number(req.body.average),
     documentPath: academicRecord.path,
     createdBy: req.user._id
@@ -31,11 +34,12 @@ async function apply(req, res) {
 
   const newApplication = new Application(application);
 
+
   try {
+    await newApplication.save();
     await student.updateOne({
       applied: true,
     });
-    await newApplication.save();
     res.redirect("/student/dashboard");
   } catch (err) {
     console.log(err);

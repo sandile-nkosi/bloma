@@ -4,9 +4,9 @@ const passport = require("passport");
 
 function getLogin(req, res) {
   if (req.isAuthenticated()) {
-    res.redirect("/");
+    res.redirect("/student/dashboard");
   } else {
-    res.render("login");
+    res.render("student/login");
   }
 }
 
@@ -20,9 +20,13 @@ function login(req, res, next) {
     if (err) {
       console.log(err);
     } else {
-      passport.authenticate("local")(req, res, () => {
-        res.redirect("/student/dashboard");
-      });
+      passport.authenticate("local", { failureRedirect: "/error" })(
+        req,
+        res,
+        () => {
+          res.redirect("/student/dashboard");
+        }
+      );
     }
   });
 }
@@ -90,7 +94,8 @@ async function getDashboard(req, res) {
       createdBy: student._id,
     }).exec();
 
-    res.render("dashboard", {
+
+    res.render("student/dashboard", {
       student: student,
       studentApplication: studentApplication,
     });
@@ -103,9 +108,11 @@ function getRegister(req, res) {
   if (req.isAuthenticated()) {
     res.redirect("/");
   } else {
-    res.render("register");
+    res.render("student/register");
   }
 }
+
+
 
 module.exports = {
   getLogin,

@@ -1,5 +1,6 @@
 const express = require('express');
 const studentController = require('../controllers/student.controller');
+const applicationController = require('../controllers/application.controller');
 const router = express.Router();
 const documentUpload = require('../middleware/student.document.upload');
 const avatarUpload = require('../middleware/student.image.upload');

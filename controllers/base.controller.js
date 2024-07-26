@@ -3,9 +3,12 @@ function getIndex(req, res){
 };
 
 function getAbout(req, res){
-  res.render('about');
+  res.render('shared/about');
 };
 
+function getError(req, res){
+  res.render('shared/500');
+};
 
 
 
@@ -13,5 +16,6 @@ function getAbout(req, res){
 
 module.exports = {
   getIndex,
-  getAbout
+  getAbout,
+  getError
 };

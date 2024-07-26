@@ -5,6 +5,7 @@ const router = express.Router();
 // routes
 router.get('/', baseController.getIndex);
 router.get('/about', baseController.getAbout);
+router.get('/error', baseController.getError);
 
 
 module.exports = router;

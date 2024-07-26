@@ -3,7 +3,7 @@ const Residence = require("../models/Residence");
 async function getResidences(req, res){
   const residences = await Residence.find();
 
-  res.render('residences', {residences: residences });
+  res.render('shared/residences', {residences: residences });
 };
 
 // to insert new residence in the database
