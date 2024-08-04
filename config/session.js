@@ -1,24 +1,31 @@
-const session = require('express-session');
-const passport = require('passport');
-const passportLocalMongoose = require('passport-local-mongoose');
-const MongoStore = require('connect-mongo');
+const expressSession = require('express-session');
+const mongoDbStore = require('connect-mongodb-session');
 
 
+function createSessionStore () {
+  const MongoDBStore  = mongoDbStore(expressSession);
 
-function createSessionConfig(){
-  return session({
+
+  const store = new MongoDBStore({
+    uri: process.env.CONNSTRING,
+    collection: 'sessions'
+  });
+
+  return store;
+}
+
+
+function createSessionConfig() {
+  return {
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,
-    store: MongoStore.create({
-      mongoUrl: process.env.CONNSTRING,
-      dbName: 'bloma',
-      autoRemove: 'native'
-     }),
-     cookie: {
+    store: createSessionStore(),
+    cookie: {
       maxAge: 0.5 * 24 * 60 * 60 * 1000
     }
-  });
-};
+  };
+}
+
 
 module.exports = createSessionConfig;

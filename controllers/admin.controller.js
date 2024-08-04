@@ -1,80 +1,112 @@
-// const Admin = require("../models/Admin");
-// const Application = require("../models/Application");
-// const passport = require("passport");
+const Admin = require("../models/Admin");
+const Student = require("../models/Student");
+const Application = require("../models/Application");
+const bcrypt = require("bcryptjs");
 
-// function getLogin(req, res) {
-//   if (req.isAuthenticated()) {
-//     res.redirect("admin/admin.dashboard");
-//   } else {
-//     res.render("admin/admin.login");
-//   }
-// }
+function getAdminLogin(req, res) {
+  if (req.session.user && req.session.user.isAdmin) {
+    res.redirect("/admin/dashboard");
+  } else {
+    res.render("admin/login");
+  }
+}
 
-// function login(req, res, next) {
-//   const admin = new Admin({
-//     username: req.body.username,
-//     password: req.body.password,
-//   });
+async function adminLogin(req, res, next) {
+  res.render("admin/login");
+}
 
-//   req.login(admin, (err) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       passport.authenticate("local")(req, res, () => {
-//         res.redirect("admin/admin.dashboard");
-//         console.log("User logged in: " + req.user.username);
-//       });
-//     }
-//   });
-// }
+async function adminLogin(req, res, next) {
+  const adminData = req.body;
+  const username = adminData.username;
+  const password = adminData.password;
 
-// function logout(req, res) {
-//   req.logout((err) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       res.redirect("/");
-//     }
-//   });
-// }
+  const existingAdmin = await Admin.findOne({ username: username }).exec();
 
-// function getRegister(req, res) {
-//   if (req.isAuthenticated()) {
-//     res.redirect("admin/admin-dashboard");
-//   } else {
-//     res.render("admin/admin.register");
-//   }
-// }
+  if (!existingAdmin) {
+    console.log("No user found");
+    return res.redirect("/admin/login");
+  }
 
-// function register(req, res) {
-//   Admin.register({username: req.body.username}, req.body.password, (err, admin) => {
-//     if (err) {
-//       console.log(err);
-//       res.redirect("/admin/register");
-//     } else {
-//       passport.authenticate("local")(req, res, () => {
-//         res.redirect("/admin-login");
-//       });
-//     }
-//   });
-// }
+  const passwordMatch = await bcrypt.compare(password, existingAdmin.password);
 
-// async function getDashboard(req, res) {
-//   // if (req.isAuthenticated()) {
-//     const admin = req.user;
-//     const allApplications = await Application.find({});
+  if (!passwordMatch) {
+    console.log("Password Incorrect");
+    return res.redirect("/admin/login");
+  }
 
-//     res.render("admin/admin.dashboard", {allApplications: allApplications});
-//   // } else {
-//   //   res.redirect("admin/admin-login");
-//   // }
-// }
+  console.log("User is authenticated");
 
-// module.exports = {
-//   getLogin,
-//   getDashboard,
-//   getRegister,
-//   login,
-//   logout,
-//   register,
-// };
+  req.session.user = {
+    id: existingAdmin._id,
+    username: existingAdmin.username,
+    isAdmin: existingAdmin.isAdmin,
+  };
+  req.session.save(() => {
+    res.redirect("/admin/dashboard");
+  });
+}
+
+function adminLogout(req, res) {
+  req.session.user = null;
+  res.redirect("/");
+}
+
+function getAdminRegister(req, res) {
+  if (req.session.user && req.session.user.isAdmin) {
+    res.redirect("/admin/dashboard");
+  } else {
+    res.render("admin/register");
+  }
+}
+
+async function adminRegister(req, res) {
+  const adminData = req.body;
+  const username = adminData.username;
+  const password = adminData.password;
+  const confirmPassword = adminData.password2;
+
+  if (
+    !username ||
+    !password ||
+    password.trim() < 6 ||
+    password != confirmPassword
+  ) {
+    console.log("Incorrect data");
+    return res.redirect("/admin/register");
+  }
+
+  const existingAdmin = await Admin.findOne({ username: username }).exec();
+
+  if (existingAdmin) {
+    console.log("User exists already");
+    return res.redirect("/admin/register");
+  }
+
+  const hashedPassword = await bcrypt.hash(password, 12);
+
+  const admin = {
+    username: username,
+    password: hashedPassword,
+  };
+
+  await Admin.create(admin);
+
+  res.redirect("/admin/login");
+}
+
+async function getAdminDashboard(req, res) {
+
+  if (!req.session.user || !req.session.user.isAdmin) {
+    return res.status(401).render("shared/401");
+  }
+  res.render("admin/dashboard");
+}
+
+module.exports = {
+  getAdminLogin,
+  getAdminDashboard,
+  getAdminRegister,
+  adminLogin,
+  adminLogout,
+  adminRegister,
+};

@@ -5,27 +5,33 @@ const ejs = require('ejs');
 const mongoose = require('mongoose');
 const database = require('./config/database').MongoURI;
 const flash = require('connect-flash');
-const passport = require('passport');
-const session = require('express-session');
-const passportLocalMongoose = require('passport-local-mongoose');
+const expressSession = require('express-session');
 const createSessionConfig = require('./config/session');
+// App routes
+const baseRoutes = require('./routes/base.routes');
+const studentRoutes = require('./routes/student.routes');
+const adminRoutes = require('./routes/admin.routes');
+const residenceRoutes = require('./routes/residence.routes');
+const applicationRoutes = require('./routes/application.routes');
+
 
 const app = express();
 
 app.set('view engine', 'ejs');
 
 app.use(express.static("public"));
+app.use(express.static("student-data"));
 app.use('/student/student-data', express.static('student-data'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(createSessionConfig());
+
+const sessionConfig = createSessionConfig();
+app.use(expressSession(sessionConfig));
 
 
-// Passport session middleware
-app.use(passport.initialize());
-app.use(passport.session());
 
-//Connect flash
+
+//Connect flash for messages 
 app.use(flash());
 
 app.use((req, res, next) => {
@@ -35,13 +41,15 @@ app.use((req, res, next) => {
 });
 
 
-// Routes
-app.use('/', require('./routes/base.routes'));
-app.use('/student', require('./routes/student.routes'));
-app.use('/residences', require('./routes/residence.routes'));
-app.use('/application', require('./routes/application.routes'));
-// app.use('/admin', require('./routes/admin.routes'));
+// Use app routes
+app.use('/', baseRoutes);
+app.use('/student', studentRoutes);
+app.use('/residences', residenceRoutes);
+app.use('/application', applicationRoutes);
+app.use('/admin', adminRoutes);
 
+
+// Database connection
 mongoose.connect(database).then(()=>{
     console.log('Database connection established');
 }).catch((err)=>{

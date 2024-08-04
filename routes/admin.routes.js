@@ -1,15 +1,15 @@
-// const express = require('express');
-// const adminController = require('../controllers/admin.controller');
-// const router = express.Router();
+const express = require('express');
+const adminController = require('../controllers/admin.controller');
+const router = express.Router();
 
-// router.get('/login', adminController.getLogin);
-// router.get('/logout', adminController.logout);
-// router.get('/register', adminController.getRegister);
-// router.get('/dashboard', adminController.getDashboard);
+router.get('/login', adminController.getAdminLogin);
 
-// router.post('/register', adminController.register);
-// router.post('/login', adminController.login);
+router.get('/logout', adminController.adminLogout);
+router.get('/register', adminController.getAdminRegister);
+router.get('/dashboard', adminController.getAdminDashboard);
+
+router.post('/register', adminController.adminRegister);
+router.post('/login', adminController.adminLogin);
 
 
-
-// module.exports = router;
+module.exports = router;
