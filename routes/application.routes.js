@@ -8,7 +8,6 @@ router.get('/all', applicationController.getApplications);
 router.get('/:id', applicationController.getSingleApplication);
 
 router.post('/apply', documentUpload, applicationController.apply);
-
 router.post('/update/:id', applicationController.updateApplication);
 
 

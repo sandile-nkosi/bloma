@@ -1,11 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>401</title>
+<%- include('../shared/partials/head', { pageTitle: 'Application' }) %>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
+<script src="/scripts/script.js" defer></script>
+<link rel="stylesheet" href="/css/error.css">
+<link rel="stylesheet" href="/css/application.css">
+<style>
+  .application-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    background: url("/images/bg.png") no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+  }
+</style>
 </head>
 <body>
-  
+
+  <main class="alert">
+    <h1>Something went wrong!</h1>
+    <p>Error 401: Unauthorized</p>
+    <p><a class="btn" href="/">Back to safety</a></p>
+  </main>
+
+
+
+
+
 </body>
-</html>
+<%- include('../shared/partials/footer') %>

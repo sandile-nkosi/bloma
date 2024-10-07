@@ -1,0 +1,191 @@
+<%- include('../shared/partials/head', { pageTitle: 'Application' }) %>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
+<script src="/scripts/script.js" defer></script>
+<link rel="stylesheet" href="/css/application.css">
+
+<style>
+  .application-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    background: url("/images/bg.png") no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+  }
+</style>
+</head>
+<body>
+  <div class="application-content">
+    <div class="application-overlay">
+      <div class="backarrow">
+        <a href="/student/dashboard"><i class="bi bi-arrow-left"></i></a>
+      </div>
+      <div class="overlay-text">
+        <h1>New Application</h1>
+      </div>
+    </div>
+    <div class="application-container">
+      <div class="application-text app1">
+        <div class="note-box">
+          <i class="bi bi-info-circle-fill"></i>
+          <h3>TAKE NOTE OF THE FOLLOWING BEFORE APPLYING</h3>
+        </div>
+        <p>For fees payable click on <a href="" style="color: #000;">http://services.nwu.ac.za/student-accounts-and-bursaries/payable-fees</a></p>
+        <p>You will receive the <span>Residence Rules and Regulations</span> the day of occupation and will be required to sign for the receipt thereof.</p>
+        <p>Applications for senior students are open until <span>26 August 2024.</span></p>
+        <p>The cancellation date of accommodation is until <span>31 December 2024.</span> Should you not cancel your accommodation a penalty of <span>R4 000</span> will be levied on your student account.</p>
+        <p class="para">Residence choices</p>
+        <p class="span">Before applying for a residence, please visit the website to ensure you are acquainted with the demographics of the residence and its location on campus.</p>
+        <p class="span">Visit <a href="" style="color: #000;">http://studies.nwu.ac.za/studies/accommodation</a></p>
+        <p>You will have a choice of three residences. If none of these choices are successful you will be placed on the waiting list and contacted when a place becomes available in your other selections. You will first be considered in the residences you are currently placed in.</p>
+        <p>You may select 3 residences.</p>
+        <p class="para">Academic year and Type of study</p>
+        <p>Choose the information that is relevant for THE YEAR YOU ARE APPLYING FOR.</p>
+        <p>The application is subject to final selection by placement committee.</p>
+        <p class="span">Please note that if your contact details are incorrect, the placement officer will not be able to contact you.</p>
+        <p class="span">Your information is treated confidentially and only available to the house parent of the residence you applied to.</p>
+      </div>
+      <div class="application-text mt-2 app2">
+        <h2>Application Opportunities</h2>
+        <p>1. You only have an opportunity to submit one application</p>
+        <p>2. If you are unsure of your application do not submit the form, exit the form by closing it.</p>
+      </div>
+      <div class="application-form year-form">
+        <form action="/application/apply" method="POST" enctype="multipart/form-data">
+          <p>Select the year you are applying for <span style="color: #ff0000;">*</span></p>
+          <input type="radio" name="applicationYear" id="2025" value="2025"><label for="2025">2025</label>
+          <p class="mt-4">Status of Application <span style="color: #ff0000;">*</span></p>
+          <input type="radio" name="applicationStatus" id="new" value="New"><label for="new">New Application</label><br>
+          <input type="radio" name="applicationStatus" id="renew" value="Renewal"><label for="">Renewal of your current residency</label>
+        
+      </div>
+      <!-- academicBox -->
+      <div class="application-text academic-box">
+        <p class="heading">ACADEMIC INFORMATION</p>
+        <p>This is the qualification you will attempt in the year your are applying for a residency.</p>
+        <p>Ex: if your are currently a final year student in and you will continue with an honors, indicate your qualification as an honors and previous qualification as your undergraduate degree</p>
+      </div>
+      <!-- studyTypeForm -->
+      <div class="application-form study-form">
+          <div class="row">
+            <p>Type of study (For the year you are applying for)<span style="color: #ff0000;">*</span></p>
+            <div class="col-md-6">
+                <div class="col-xxl-4 programs">
+                  <input type="radio" id="undergrad" name="typeOfStudy" value="Undergraduate degree/diploma">
+                  <label for="undergrad">Undergraduate degree/Diploma</label>
+                </div>
+                <div class="col-xxl-4 programs">
+                  <input type="radio" id="honours" name="typeOfStudy" value="Honours degree/Postgraduate diploma">
+                  <label for="honours">Honours degree/Postgraduate Diploma</label>
+                </div>
+            </div>
+            <div class="col-md-6">
+              <div class="col-xxl-4 programs">
+                <input type="radio" id="masters" name="typeOfStudy" value="Masters degree">
+                <label for="masters">Masters degree</label>
+              </div>
+              <div class="col-xxl-4 programs">
+                <input type="radio" id="pgce" name="typeOfStudy" value="Postgraduate Certificate(PGCE)">
+                <label for="pgce">Postgraduate Certificate(PGCE)</label>
+              </div>
+                <div class="col-xxl-4 programs">
+                  <input type="radio" id="phd" name="study-type" value="PhD degree">
+                  <label for="phd">PhD degree</label>
+                </div>
+            </div>
+          </div>
+
+          <div class="row mt-5">
+            <p>Which ACADEMIC year of your studies are you in for the YEAR you are APPLYING for. <span style="color: #ff0000;">*</span> (not historical)</p>
+            <div class="col-md-6">
+              <div>
+                <input type="radio" id="year1" name="academicYear" value="1">
+                <label for="year1">1</label>
+              </div>
+              <div>
+                <input type="radio" id="year2" name="academicYear" value="2">
+                <label for="year2">2</label>
+              </div>
+              <div>
+                <input type="radio" id="year3" name="academicYear" value="3">
+                <label for="year3">3</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div>
+                <input type="radio" id="year4" name="academicYear" value="4">
+                <label for="year4">4</label>
+              </div>
+              <div>
+                <input type="radio" id="year5" name="academicYear" value="5">
+                <label for="year5">5</label>
+              </div>
+              <div>
+                <input type="radio" id="year6" name="academicYear" value="6">
+                <label for="year6">6</label>
+              </div>
+            </div>
+          </div>
+      </div>
+      <!-- disabilityForm -->
+      <div class="application-text disab" style="margin-bottom: -20px;">
+        <p class="heading mt-3">DISABILITIES</p>
+      </div>
+      <div class="application-form disab-form">
+        <p>Do you have any disabilities?</p>
+        <input type="radio" name="disability" id="yes" value="true" ><label for="yes">Yes</label>
+        <input type="radio" name="disability" id="no" style="margin-left: 15px;" value="false"><label for="no">No</label>
+        <p class="mt-4">If Yes, please specify</p>
+        <input class="disab-input" id="disability" name="disabilityDetails" autocomplete="off" type="text" />
+      </div>
+      <!-- gradForm -->
+      <div class="application-form grad-form">
+        <p>Enter overall grade average <span style="color: #ff0000;">*</span></p>
+        <input class="grad-input" name="average" autocomplete="off" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==2) return false;" /><br>
+        <p class="mb-5">Upload your latest transcript/matric certificate<span style="color: #ff0000;">*</span></p>
+        <div class="link-box">
+          <input type="file" id="file-upload" style="display: none;" name="academicRecord" accept=".pdf">
+          <button name="academicRecord" type="button" id="upload-button"><i class="bi bi-file-earmark-arrow-up"></i>&nbsp; Upload File</button>
+        </div>
+      </div>
+    </div>
+    <div class="btn-box d-flex align-items-center my-5">
+      <button type="button" class="back-btn mx-5"><a href="dashboard.html">Back</a></button>
+      <button type="button" class="submit-btn mx-5" id="submitBtn">Submit</button>
+    </div>
+
+    <!-- confirmPopup -->
+<div id="confirmModal" class="modal">
+  <div class="cnfrm-modal-content">
+    <div class="pop-head">
+      <h3>Confirm Application</h3>
+      <span class="close">Close X</span>
+    </div>
+    <div class="pop-body">
+      <p>Please review your application details before proceeding to submit. Ensure all information is accurate and complete. Once submitted, you may not be able to make changes.</p>
+    </div>
+    <div class="pop-foot">
+      <button type="submit" class="confirm-btn" id="confirmBtn">Confirm</button>
+    </div>
+  </div>
+</div>
+</form>
+
+<!-- applicationPopup -->
+<div id="successModal" class="modal">
+  <div class="app-modal-content">
+    <div class="pop-head">
+      <h3>Application Part l completed</h3>
+      <span class="close">Close X</span>
+    </div>
+    <div class="pop-body app-body">
+      <p>Application successful. Click “Close” to continue to dashboard to continue with the application process.</p>
+    </div>
+  </div>
+</div>
+  </div>
+
+  <%- include('../shared/partials/footer') %>

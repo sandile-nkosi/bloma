@@ -1,0 +1,223 @@
+
+
+ .Details{
+
+    width: 100%;
+    background-color: #d9d9d9;;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    
+
+}
+
+.Section-Container{
+
+    display: flex;
+    justify-content: center;
+    margin: 3rem;
+}
+
+.Student-Information{
+
+    color: #d9d9d9;
+    background-color: #6C3D91;
+    height: 4rem;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 8px;   
+}
+.Details h3{
+
+    margin-left: 8px;
+
+}
+
+.Residence-Choices{
+
+    color: #d9d9d9;
+    background-color: #6C3D91;
+    height: 4rem;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 8px;
+    
+}
+.Academic-records{
+
+    color: #d9d9d9;
+    background-color: #6C3D91;
+    height: 4rem;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 8px;
+    
+}
+.Application-Status{
+
+    color: #d9d9d9;
+    background-color: #6C3D91;
+    height: 4rem;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin: 8px;
+    
+}
+
+.Students-details-Name-Student-bunber{
+
+    display: flex;
+    flex-direction: column;
+    height: 8rem;
+    margin: 1.4rem;
+}
+
+.Status h4{
+
+    margin: 1.4rem;
+
+}
+
+.Choices-3{
+
+    margin: 1.4rem;
+    gap: 1.4rem;
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between;
+}
+
+
+.Choices-3 select{
+
+    width: 12.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+
+}
+.Transcrpt-view{
+
+    display: flex;
+    flex-direction: row;
+    margin: 1.4rem;
+    gap: 2rem;
+
+}
+
+.Transcrpt-view a {
+
+    color: black;
+    font-size: 1.2em;
+    text-decoration: underline;
+}
+
+.Grades-View {
+
+    display: flex;
+    flex-direction: row;
+    margin: 1.4rem;
+    gap: 3.8rem;
+
+}
+
+.Grades-View a{
+
+    color: black;
+    font-size: 1.2em;
+    text-decoration: underline;
+}
+.Academic-Records-container{
+
+    display: flex;
+    flex-direction: row;
+
+}
+.Academic-Records-container .grades-avarage{
+
+    margin: 1.5em;
+}
+
+.comment-label{
+
+    
+    font-weight: bolder;
+}
+
+.textarea{
+
+    background-color: #d9d9d9;
+    box-shadow: #d9d9d9;
+    border-radius: 4px;
+    height: 10rem;
+}
+.Comment-and-label{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 3em;
+   
+}
+.save-and-back-button{
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 25rem;
+}
+
+.back-buttuon{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* margin: 10px; */
+    height: 3rem;
+    width: 7rem;
+    background-color: #6C3D91;
+    color: #d9d9d9;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.save-changes{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 3rem;
+    width: 7rem;
+    background-color: #6C3D91;
+    color: #d9d9d9;
+    border-radius: 15px;
+    cursor: pointer;
+
+}
+
+table { 
+    border-spacing: 30px; 
+}
+
+tr, td {
+    padding: 15px;
+  }
+
+#button {
+    color: white;
+    background-color: #6c3d91f7;
+    border-radius: 11px;
+    padding: 3px 16px;
+    text-decoration: none;
+    font-size: 1.2rem;
+}

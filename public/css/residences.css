@@ -1,0 +1,6 @@
+#filter{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}

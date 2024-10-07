@@ -6,9 +6,11 @@ const imageUpload = require('../middleware/residence.upload');
 
 
 router.get('/', residenceController.getResidences);
+router.get('/:id', residenceController.getSingleResidence);
 
 router.post('/', imageUpload, residenceController.newResidence);
 
+router.post('/apply/new/:id', residenceController.addResidence);
 
 
 module.exports = router;

@@ -1,0 +1,245 @@
+<%- include('../shared/partials/head', { pageTitle: 'Dashboard' }) %>
+<link rel="stylesheet" href="/css/dashboard.css" />
+</head>
+<body>
+  <section class="dashboard-section">
+    <div class="sidebar">
+      <div
+        class="d-flex justify-content-center align-items-center gap-2 fs-4"
+      >
+        <i class="bi bi-person-circle icon-large"></i>
+        <span><%= student.studentNum %></span>
+      </div>
+      <div class="sidebar-btns">
+        <button class="profile-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Profile Information</button>
+        <button class="log-btn text-dark"><a class="text-dark" href="/student/logout">Logout</a></button>
+      </div>
+    </div>
+
+    <div class="dashboard-page-main">
+      <div class="content">
+        <div>
+          <h1>Welcome, <%= student.firstName %></h1>
+          <p>
+            We're excited to have you back. Here's a quick overview of your
+            application.
+          </p>
+        </div>
+      </div>
+
+    <div class="dashboard-boxes my-5 d-flex px-4 gap-4">
+      <div class="d-left-boxes d-flex flex-column gap-4">
+        <div class="d-left-1">
+          <h2>Track your application</h2>
+          <p>Stay updated on the progress of your application</p>
+          <button data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Application Status</button>
+        </div>
+        <div class="d-left-2">
+          <h2>Apply Now</h2>
+          <p>
+            Apply for accommodation. Please make sure to explore the
+            residences and requirements before applying.
+          </p>
+          <% if(student.applications ==3) {%>
+            <button disabled>Already Applied</button>
+          <% }else if(!student.applied) { %>
+            <button><a href="/application/apply">Complete Application Details</a></button>
+          <% }else { %>
+            <button><a href="/residences">New Application</a></button>
+          <% } %>
+        </div>
+      </div>
+      <div class="right-box">
+        <div>
+          <h2>Notifications</h2>
+        </div>
+      </div>
+    </div>
+    <div class="exp-about-boxes my-5 px-4 d-flex align-items-start gap-4">
+      <div class="explore">
+        <h2>Explore our residences</h2>
+        <p>
+          Discover the perfect on-campus accommodation tailored to your
+          needs. Explore our residences, apply for housing, and become part
+          of our vibrant community.
+        </p>
+      </div>
+
+      <div class="explore-img position-relative ms-auto">
+        <img
+          class="exp-img w-100 h-100"
+          src="/images/exp-img.png"
+          alt=""
+        />
+        <button class="position-absolute"><a href="/residences">Explore</a></button>
+      </div>
+    </div>
+
+    <div class="exp-about-box-2 my-5 px-4 d-flex align-items-start gap-4">
+      <div class="explore-img position-relative">
+        <img
+          class="exp-img w-100 h-100"
+          src="/images/about-img.jfif"
+          alt=""
+        />
+        <button
+          class="position-absolute"
+          style="background-color: rgba(57, 132, 194, 0.76)"
+        ><a href="/about">Learn More</a> 
+        </button>
+      </div>
+
+      <div class="explore ms-auto">
+        <h2>About Us</h2>
+        <p>Find out more on how to reach out to us.</p>
+      </div>
+    </div>
+
+
+
+
+
+  <%- include('../shared/partials/footer') %>
+  </section>
+  
+  <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header application-s-header">
+          <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Application status</h1>
+          <button type="button" class="btn-close text-light" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <% if(student.applications == 0) {%>
+            <div>
+              <h3>Option 1</h3>
+              <h3>N/A</h3>
+            </div>
+            <div>
+              <h3>Option 2</h3>
+              <h3>N/A</h3>
+            </div>
+            <div>
+              <h3>Option 3</h3>
+              <h3>N/A</h3>
+            </div>
+          <% } %>
+
+          <% if(student.applications == 1) {%>
+            <div>
+              <h3><%= studentApplication.residenceOne %></h3>
+              <h3><%= studentApplication.residenceOneStatus %></h3>
+            </div>
+            <div>
+              <h3>Option 2</h3>
+              <h3>N/A</h3>
+            </div>
+            <div>
+              <h3>Option 3</h3>
+              <h3>N/A</h3>
+            </div>
+          <% } %>
+
+          <% if(student.applications == 2) {%>
+            <div>
+              <h3><%= studentApplication.residenceOne %></h3>
+              <h3><%= studentApplication.residenceOneStatus %></h3>
+            </div>
+            <div>
+              <h3><%= studentApplication.residenceTwo %></h3>
+              <h3><%= studentApplication.residenceTwoStatus %></h3>
+            </div>
+            <div>
+              <h3>Option 3</h3>
+              <h3>N/A</h3>
+            </div>
+          <% } %>
+
+          <% if(student.applications == 3) {%>
+            <div>
+              <h3><%= studentApplication.residenceOne %></h3>
+              <h3><%= studentApplication.residenceOneStatus %></h3>
+            </div>
+            <div>
+              <h3><%= studentApplication.residenceTwo %></h3>
+              <h3><%= studentApplication.residenceTwoStatus %></h3>
+            </div>
+            <div>
+              <h3><%= studentApplication.residenceThree %></h3>
+              <h3><%= studentApplication.residenceThreeStatus %></h3>
+            </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade modal-xl mt-5" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog ">
+  <div class="modal-content profile-modal">
+    <div class="modal-header profile-header">
+      <h1 class="modal-title fs-5 d-flex align-items-center gap-2" id="staticBackdropLabel">
+        <i class="bi bi-person-circle icon-large"></i>
+        <span class="text-light"><%= student.studentNum %></span>
+      </h1>
+      <button type="button" class="btn-close text-light" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body profile-modal-body">
+      <div class="profile-modal-left d-flex flex-column">
+        <h4>Details</h4>
+        <h4>Documents uploaded</h4>
+      </div>
+      <div class="profile-modal-right d-flex flex-column">
+        <div class="details d-flex flex-column">
+          <div>
+            <h4>Name:</h4>
+            <p class="details-text"><%= student.firstName %></p>
+          </div>
+          <div>
+            <h4>Surname:</h4>
+            <p class="details-text"><%= student.lastName %></p>
+          </div>
+          <div>
+            <h4>E-mail:</h4>
+            <input type="text" value="<%= student.email %>" class="details-edit" id="details-edit-para" hidden>
+            <p class="details-text" id="email-para"><%= student.email %></p>
+            <p class="edit" id="email-edit">Edit</p>
+          </div>
+          <div>
+            <h4>Phone Number:</h4>
+            <input type="text" value="<%= student.phone %>" class="details-edit" hidden>
+            <p class="details-text" id="phone-para"><%= student.phone %></p>
+            <p class="edit" id="phone-edit">Edit</p>
+          </div>
+        </div>
+        <div class="documents">
+          <% if (student.applied == true) {%>
+            <a href="<%= studentApplication.documentPath %>" target="_blank">View Academic Record</a>
+          <% }else { %>
+            <h4>No Documents uploaded</h4>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+    crossorigin="anonymous"
+  ></script>
+  <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../scripts/dashboard.js"></script>
+</body>
+</html>

@@ -1,20 +1,14 @@
-const selectElement = document.getElementById("residences");
-const residenceOneElement = document.getElementById("1");
-const residenceTwoElement = document.getElementById("2");
-const residenceThreeElement = document.getElementById("3");
+const residenceOneSelectElement = document.getElementById("residenceOneStatus");
+const residenceTwoSelectElement = document.getElementById("residenceTwoStatus");
+const residenceThreeSelectElement = document.getElementById("residenceThreeStatus");
 
-selectElement.addEventListener("change", () => {
-  if (selectElement.value === "1") {
-    residenceOneElement.classList.remove("hidden");
-    residenceTwoElement.classList.add("hidden");
-    residenceThreeElement.classList.add("hidden");
-  } else if (selectElement.value === "2") {
-    residenceOneElement.classList.add("hidden");
-    residenceTwoElement.classList.remove("hidden");
-    residenceThreeElement.classList.add("hidden");
-  } else if (selectElement.value === "3") {
-    residenceOneElement.classList.add("hidden");
-    residenceTwoElement.classList.add("hidden");
-    residenceThreeElement.classList.remove("hidden");
-  }
-});
+if(residenceOneSelectElement.value == "Accepted"){
+  residenceTwoSelectElement.disabled = true;
+  residenceThreeSelectElement.disabled = true;
+}else if(residenceTwoSelectElement.value == "Accepted"){
+  residenceOneSelectElement.disabled = true;
+  residenceThreeSelectElement.disabled = true;
+}else if(residenceThreeSelectElement.value == "Accepted"){
+  residenceOneSelectElement.disabled = true;
+  residenceTwoSelectElement.disabled = true;
+};

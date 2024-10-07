@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <script src="../../scripts/admin.js" defer></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Righteous&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Righteous&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/staff.css" />
+    <link rel="stylesheet" href="/css/mediaQueries.css" />
+  </head>
+  <body>
+    <nav class="navbar staff-nav navbar-expand-lg">
+      <div class="container-fluid d-flex align-items-center">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <img src="/images/logo4.png" alt="" />
+        </a>
+        <div class="navbar-text">
+          <p>NORTH-WEST UNIVERSITY</p>
+          <p>NOORDWES-UNIVERSITEIT</p>
+          <p>YUNIBESITI YA BOKONE-BOPHIRIMA</p>
+        </div>
+        <h1 class="ms-auto">BLOMA</h1>
+        <div
+          class="staff-nav-data ms-auto d-flex justify-content-center align-items-center fs-4"
+        >
+          Staff: <span>1208708</span>
+          <i class="bi bi-person-circle icon-large"></i>
+        <a href="/admin/logout" class="logout staff-logout-btn">Sign out</a>
+      </div>
+      </div>
+    </nav>
+
+    <section class="staff">
+      <div class="staff-head">
+        <div
+          class="staff-head-content d-flex align-items-center justify-content-between mx-auto"
+        >
+          <h2>Dashboard</h2>
+              
+        </div>
+      </div>
+      <div class="sub-head mx-auto">
+        <div class="sub-head-left">
+          <h3>Total Applications</h3>
+          <h2><%= applicationTotal %></h2>
+        </div>
+        <div
+          class="sub-head-right d-flex align-items-center justify-content-center gap-4"
+        >
+          <h4>Filter By</h4>
+          <div class="staff-checkbox d-flex align-items-center gap-3">
+            <input type="checkbox" class="check-box" id="accepted"/>
+            <label for="accepted">Accepted</label>
+          </div>
+          <div class="staff-checkbox d-flex align-items-center gap-3">
+            <input type="checkbox" class="check-box" id="rejected"/>
+            <label for="rejected">Rejected</label>
+          </div>
+          <div class="staff-checkbox d-flex align-items-center gap-3">
+            <input type="checkbox" class="check-box" id="submitted"/>
+            <label for="submitted">Submitted</label>
+          </div>
+        </div>
+        <form action="/admin/search" method="post">
+          <div class="input-search">
+            <input type="text" placeholder="Search by student number" name="search"/>
+            <i class="bi bi-search"></i>
+            <button>Search</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- All applications -->
+      <div class="table-responsive mx-auto" id="allOptions">
+        <table class="table custom-table">
+          <thead>
+            <tr>
+              <th class="table-box">Student number</th>
+              <th class="table-box">Residence Choices</th>
+              <th class="table-box">Status</th>
+              <th class="table-box no-border">Student information</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(const application of applications) {%>
+              <tr>
+                <td class="table-box"><%= application.studentNum %></td>
+                <td class="table-box"><%= application.residenceOne + "; " + application.residenceTwo + "; " + application.residenceThree %></td>
+                <td class="table-box">
+                  <% if(application.residenceOneStatus == 'Accepted' || application.residenceTwoStatus == 'Accepted' || application.residenceThreeStatus == 'Accepted') {%>
+                    Accepted
+                  <% }else if(application.residenceOneStatus == 'Submitted' || application.residenceTwoStatus == 'Submitted' || application.residenceThreeStatus == 'Submitted') {%>
+                    Submitted
+                  <% }else { %>
+                    <%= application.residenceOneStatus %>
+                  <% } %>
+                </td>
+                <td class="table-box no-border">
+                <a class="text-primary text-decoration-underline" href="/application/<%= application._id %>"
+                  >Open Application</a
+                >
+                </td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+      <!-- Accepted applications -->
+      <div class="table-responsive mx-auto" id="acceptedOptions" style="display: none;">
+        <table class="table custom-table">
+          <thead>
+            <tr>
+              <th class="table-box">Student number</th>
+              <th class="table-box">Residence Choices</th>
+              <th class="table-box">Status</th>
+              <th class="table-box no-border">Student information</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(const application of applications) {%>
+              <%  if(application.residenceOneStatus === 'Accepted' || application.residenceTwoStatus === 'Accepted' || application.residenceThreeStatus === 'Accepted') {%>
+                <tr></tr>
+                <td class="table-box"><%= application.studentNum %></td>
+                <td class="table-box"><%= application.residenceOne + "; " + application.residenceTwo + "; " + application.residenceThree %></td>
+                <td class="table-box">
+                  <% if(application.residenceOneStatus == 'Accepted') {%>
+                    <%= application.residenceOneStatus %>
+                  <% }else if(application.residenceTwoStatus == 'Accepted') { %>
+                    <%= application.residenceTwoStatus %>
+                  <% } else if(application.residenceThreeStatus == 'Accepted') {%>
+                    <%= application.residenceThreeStatus %>
+                  <% } %>
+                </td>
+                <td class="table-box no-border">
+                <a class="text-primary text-decoration-underline" href="/application/<%= application._id %>"
+                  >Open Application</a
+                >
+                </td>
+              </tr>
+              <% } %>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+      <!-- Rejected applications -->
+      <div class="table-responsive mx-auto" id="rejectedOptions" style="display: none;">
+        <table class="table custom-table">
+          <thead>
+            <tr>
+              <th class="table-box">Student number</th>
+              <th class="table-box">Residence Choices</th>
+              <th class="table-box">Status</th>
+              <th class="table-box no-border">Student information</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(const application of applications) {%>
+              <%  if(application.residenceOneStatus === 'Rejected' || application.residenceTwoStatus === 'Rejected' || application.residenceThreeStatus === 'Rejected') {%>
+                <tr></tr>
+                <td class="table-box"><%= application.studentNum %></td>
+                <td class="table-box"><%= application.residenceOne + "; " + application.residenceTwo + "; " + application.residenceThree %></td>
+                <td class="table-box">
+                  <% if(application.residenceOneStatus == 'Rejected') {%>
+                    <%= application.residenceOneStatus %>
+                  <% }else if(application.residenceTwoStatus == 'Rejected') { %>
+                    <%= application.residenceTwoStatus %>
+                  <% } else if(application.residenceThreeStatus == 'Rejected') {%>
+                    <%= application.residenceThreeStatus %>
+                  <% } %>
+                </td>
+                <td class="table-box no-border">
+                <a class="text-primary text-decoration-underline" href="/application/<%= application._id %>"
+                  >Open Application</a
+                >
+                </td>
+              </tr>
+              <% } %>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+      <!-- Submitted applications -->
+      <div class="table-responsive mx-auto" id="submittedOptions" style="display: none;">
+        <table class="table custom-table">
+          <thead>
+            <tr>
+              <th class="table-box">Student number</th>
+              <th class="table-box">Residence Choices</th>
+              <th class="table-box">Status</th>
+              <th class="table-box no-border">Student information</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(const application of applications) {%>
+              <%  if(application.residenceOneStatus === 'Submitted' || application.residenceTwoStatus === 'Submitted' || application.residenceThreeStatus === 'Submitted') {%>
+                <tr></tr>
+                <td class="table-box"><%= application.studentNum %></td>
+                <td class="table-box"><%= application.residenceOne + "; " + application.residenceTwo + "; " + application.residenceThree %></td>
+                <td class="table-box">
+                  <% if(application.residenceOneStatus == 'Submitted') {%>
+                    <%= application.residenceOneStatus %>
+                  <% }else if(application.residenceTwoStatus == 'Submitted') { %>
+                    <%= application.residenceTwoStatus %>
+                  <% } else if(application.residenceThreeStatus == 'Submitted') {%>
+                    <%= application.residenceThreeStatus %>
+                  <% } %>
+                </td>
+                <td class="table-box no-border">
+                <a class="text-primary text-decoration-underline" href="/application/<%= application._id %>"
+                  >Open Application</a
+                >
+                </td>
+              </tr>
+              <% } %>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+</body>
+<%- include('../shared/partials/footer') %>

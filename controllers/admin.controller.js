@@ -1,13 +1,14 @@
 const Admin = require("../models/Admin");
-const Student = require("../models/Student");
 const Application = require("../models/Application");
+const Student = require("../models/Student");
 const bcrypt = require("bcryptjs");
+let errorMsg = "";
 
 function getAdminLogin(req, res) {
   if (req.session.user && req.session.user.isAdmin) {
     res.redirect("/admin/dashboard");
   } else {
-    res.render("admin/login");
+    res.render("admin/login", { errorMsg });
   }
 }
 
@@ -19,31 +20,38 @@ async function adminLogin(req, res, next) {
   const adminData = req.body;
   const username = adminData.username;
   const password = adminData.password;
+  errorMsg = "";
 
-  const existingAdmin = await Admin.findOne({ username: username }).exec();
+  try {
+    const existingAdmin = await Admin.findOne({ username: username }).exec();
 
-  if (!existingAdmin) {
-    console.log("No user found");
-    return res.redirect("/admin/login");
+    if (!existingAdmin) {
+      errorMsg = "No user found";
+      return res.redirect("/admin/login");
+    }
+
+    const passwordMatch = await bcrypt.compare(
+      password,
+      existingAdmin.password
+    );
+
+    if (!passwordMatch) {
+      errorMsg = "Password Incorrect";
+      return res.redirect("/admin/login");
+    }
+
+    req.session.user = {
+      id: existingAdmin._id,
+      username: existingAdmin.username,
+      isAdmin: existingAdmin.isAdmin,
+    };
+    req.session.save(() => {
+      res.redirect("/admin/dashboard");
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(401).render("shared/401");
   }
-
-  const passwordMatch = await bcrypt.compare(password, existingAdmin.password);
-
-  if (!passwordMatch) {
-    console.log("Password Incorrect");
-    return res.redirect("/admin/login");
-  }
-
-  console.log("User is authenticated");
-
-  req.session.user = {
-    id: existingAdmin._id,
-    username: existingAdmin.username,
-    isAdmin: existingAdmin.isAdmin,
-  };
-  req.session.save(() => {
-    res.redirect("/admin/dashboard");
-  });
 }
 
 function adminLogout(req, res) {
@@ -75,31 +83,55 @@ async function adminRegister(req, res) {
     return res.redirect("/admin/register");
   }
 
-  const existingAdmin = await Admin.findOne({ username: username }).exec();
+  try {
+    const existingAdmin = await Admin.findOne({ username: username }).exec();
 
-  if (existingAdmin) {
-    console.log("User exists already");
-    return res.redirect("/admin/register");
+    if (existingAdmin) {
+      console.log("User exists already");
+      return res.redirect("/admin/register");
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 12);
+
+    const admin = {
+      username: username,
+      password: hashedPassword,
+    };
+
+    await Admin.create(admin);
+
+    res.redirect("/admin/login");
+  } catch (err) {
+    console.log(err);
+    return res.status(401).render("shared/401");
   }
-
-  const hashedPassword = await bcrypt.hash(password, 12);
-
-  const admin = {
-    username: username,
-    password: hashedPassword,
-  };
-
-  await Admin.create(admin);
-
-  res.redirect("/admin/login");
 }
 
 async function getAdminDashboard(req, res) {
-
   if (!req.session.user || !req.session.user.isAdmin) {
     return res.status(401).render("shared/401");
   }
-  res.render("admin/dashboard");
+  const applications = await Application.find();
+  const applicationTotal = await Application.countDocuments();
+
+  res.render("admin/dashboard", { applications, applicationTotal });
+}
+
+async function search(req, res){
+  let keyword = Number(req.body.search);
+
+  try {
+    const student = await Student.findOne({ studentNum: keyword }).exec();
+    const singleApplication = await Application.findOne({ 'studentNum': keyword });
+    if(singleApplication){
+      return res.render("admin/single-application", { singleApplication, student });
+    }else {
+      res.redirect("/admin/dashboard");
+    }   
+  } catch (err) {
+    console.log('An error with the search occured')
+  }
+  
 }
 
 module.exports = {
@@ -109,4 +141,5 @@ module.exports = {
   adminLogin,
   adminLogout,
   adminRegister,
+  search
 };

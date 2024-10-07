@@ -2,9 +2,15 @@ const mongoose = require("mongoose");
 
 const StudentSchema = new mongoose.Schema(
   {
-    email: String,
+    email: {
+      type: String,
+      unique: true
+    },
     password: String,
-    studentNum: Number,
+    studentNum: {
+      type: Number,
+      unique: true
+    },
     firstName: String,
     lastName: String,
     gender: String,
@@ -12,6 +18,10 @@ const StudentSchema = new mongoose.Schema(
     applied: {
       type: Boolean,
       default: false,
+    },
+    applications: {
+      type: Number,
+      default: 0,
     },
     phone: String,
     avatar: {

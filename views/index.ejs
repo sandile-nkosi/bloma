@@ -1,0 +1,67 @@
+<%- include('shared/partials/head', { pageTitle: 'Bloma NWU Residences' }) %>
+<style>
+  .content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("/images/bg.png") no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+  }
+</style>
+</head>
+<body>
+  <div class="content">
+    <div class="overlay">
+      <div class="overlay-text">
+        <h1>Start Your Campus Life Journey Today</h1>
+      </div>
+    </div>
+    <div class="text-box">
+      <p style="color: white;">Welcome to the North-West University Accommodation Portal! Here, you can easily apply for on-campus housing, check the status of your application, and find all the information you need about our residences. Whether you are an undergraduate or postgraduate student, our portal is designed to help you find the perfect living environment to support your academic journey. Please log in with your university credentials to get started.</p>
+    </div>
+  </div>
+  <section id="explore" class="explore">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 explore-text">
+          <h2 class="mb-4">Prospective Students</h2>
+          <p>Discover the perfect on-campus accommodation tailored to your needs. Explore our residences, apply for housing, and become part of our vibrant community.</p>
+        </div>
+        <div class="col-lg-6 position-relative">
+          <img src="/images/exp-img.png" alt="Background" class="background-image">
+          <div class="overlay">
+            <a href="/student/register"><button class="explore-btn">Sign Up</button></a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 position-relative">
+          <img src="/images/about-img.jfif" alt="Background" class="background-image">
+          <div class="overlay">
+            <a href="/student/login"><button class="explore-btn">Sign in</button></a>
+          </div>
+        </div>
+        <div class="col-lg-6 explore-text about">
+          <h2 class="mb-4">Current Students</h2>
+          <p>Get to know more about the NWU accommodation services, requirements by contacting the respective staff.</p>
+        </div>
+      </div>
+      <div class="row mb-5">
+        <div class="col-lg-6 explore-text">
+          <h2 class="mb-4">Explore Residences</h2>
+          <p>Log in with your student number to apply for accommodation and check your application status. Please make sure to go over the requirements before applying</p>
+        </div>
+        <div class="col-lg-6 position-relative">
+          <img src="/images/apply-img.jfif" alt="Background" class="background-image">
+          <div class="overlay">
+            <a href="/residences"><button class="explore-btn">Explore</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <%- include('shared/partials/footer') %>

@@ -1,0 +1,94 @@
+<%- include('../shared/partials/head', { pageTitle: 'Sign Up' }) %>
+<style>
+  body {
+    background: url("/images/login-bg.jfif") no-repeat center center;
+    background-size: cover;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+  }
+</style>
+</head>
+<body>
+  <div class="back-arrow register">
+    <a href="/"><i class="bi bi-arrow-left"></i></a>
+  </div>
+  <div class="login-container" style="margin-top: 8rem;">
+    <div class="login-card register">
+      <div class="icon-box">
+        <i class="bi bi-person-fill"></i>
+      </div>
+      <% if(errorMsg) {%>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <%= errorMsg %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <form action="/student/register" method="POST">
+          <%- include ('../shared/partials/messages') %>
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email" required>
+              <label for="email2">Confirm Email</label>
+              <input type="email" name="email2" id="email2" required>  
+              <label for="studentNum">Student number</label>
+              <input type="number" name="studentNum" id="studentNum" required>  
+              <label for="firstName">First Name</label>
+              <input type="text" name="firstName" id="firstName" required>  
+              <label for="lastName">Last Name</label>
+              <input type="text" name="lastName" id="lastName" required>  
+              <label for="phone">Phone</label>
+              <input type="text" name="phone" id="phone" required maxlength="10">  
+             <label for="gender">Gender</label>
+            <select name="gender" id="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>  
+              <label for="password">Password</label>
+              <input type="password" name="password" id="password" minlength="6" >  
+              <label for="password2">Confirm Password</label>
+              <input type="password" name="password2" id="password2" minlength="6" >  
+          <div class="d-flex align-items-center justify-content-evenly">
+              <button type="submit">Sign Up</a></button>
+                <button type="reset" class="clear-btn">Clear</button>
+          </div>
+        </form>
+      <% }else { %>
+        <form action="/student/register" method="POST">
+          <%- include ('../shared/partials/messages') %>
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email" required>
+              <label for="email2">Confirm Email</label>
+              <input type="email" name="email2" id="email2" required>  
+              <label for="studentNum">Student number</label>
+              <input type="number" name="studentNum" id="studentNum" required>  
+              <label for="firstName">First Name</label>
+              <input type="text" name="firstName" id="firstName" required>  
+              <label for="lastName">Last Name</label>
+              <input type="text" name="lastName" id="lastName" required>  
+              <label for="phone">Phone</label>
+              <input type="text" name="phone" id="phone" required maxlength="10">  
+             <label for="gender">Gender</label>
+            <select name="gender" id="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>  
+              <label for="password">Password</label>
+              <input type="password" name="password" id="password" minlength="6" >  
+              <label for="password2">Confirm Password</label>
+              <input type="password" name="password2" id="password2" minlength="6" >  
+          <div class="d-flex align-items-center justify-content-evenly">
+              <button type="submit">Sign Up</a></button>
+                <button type="reset" class="clear-btn">Clear</button>
+          </div>
+        </form>
+      <% } %>
+    </div>
+  </div>  
+<%- include('../shared/partials/footer') %>
