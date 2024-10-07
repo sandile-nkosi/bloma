@@ -40,6 +40,11 @@ async function apply(req, res) {
     const student = await Student.findById(req.session.user.id).exec();
     const academicRecord = req.file;
 
+    if(!academicRecord){
+      console.log("No academic record");
+      return res.redirect('/application/apply');
+    };
+
     const application = {
       studentNum: Number(student.studentNum),
       studentName: student.firstName + " " + student.lastName,
