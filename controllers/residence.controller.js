@@ -1,6 +1,7 @@
 const Application = require("../models/Application");
 const Residence = require("../models/Residence");
 const Student = require("../models/Student");
+const sendMail = require("../middleware/mailer");
 
 async function getResidences(req, res) {
   try {
@@ -70,6 +71,28 @@ async function addResidence(req, res) {
         }
       );
 
+      const mailOptions = {
+        from: "do not reply <blomaresidence@gmail.com>",
+        to: student.email,
+        subject: "New Residence Application",
+        text: `
+        Dear ${studentApplication.studentName}
+        Your application for residence at a NWU Mafikeng Residence has been submitted. Please login to Bloma to view any updates.
+        Regards
+        NWU MFK Residence Management`,
+        html: `
+        <h4>Dear ${studentApplication.studentName}</h4>
+        <p>Your application for residence at a NWU Mafikeng Residence has been submitted. Please login to Bloma to view any updates.</p>
+        <p>Regards</p>
+        NWU MFK Residence Management`,
+      };
+  
+      sendMail(mailOptions).then((result)=>{
+        console.log(result);
+      }).catch((err)=>{
+        console.log(err);
+      });
+
       return res.redirect("/student/dashboard");
     } else if (
       student.applications == 1 &&
@@ -104,6 +127,28 @@ async function addResidence(req, res) {
           runValidators: true,
         }
       );
+
+      const mailOptions = {
+        from: "do not reply <blomaresidence@gmail.com>",
+        to: student.email,
+        subject: "New Residence Application",
+        text: `
+        Dear ${studentApplication.studentName}
+        Your application for residence at a NWU Mafikeng Residence has been submitted. Please login to Bloma to view any updates.
+        Regards
+        NWU MFK Residence Management`,
+        html: `
+        <h4>Dear ${studentApplication.studentName}</h4>
+        <p>Your application for residence at a NWU Mafikeng Residence has been submitted. Please login to Bloma to view any updates.</p>
+        <p>Regards</p>
+        NWU MFK Residence Management`,
+      };
+  
+      sendMail(mailOptions).then((result)=>{
+        console.log(result);
+      }).catch((err)=>{
+        console.log(err);
+      });
 
       return res.redirect("/student/dashboard");
     } else if (
@@ -140,6 +185,28 @@ async function addResidence(req, res) {
           runValidators: true,
         }
       );
+
+      const mailOptions = {
+        from: "do not reply <blomaresidence@gmail.com>",
+        to: student.email,
+        subject: "New Residence Application",
+        text: `
+        Dear ${studentApplication.studentName}
+        Your application for residence at a NWU Mafikeng Residence has been submitted. Please login to Bloma to view any updates.
+        Regards
+        NWU MFK Residence Management`,
+        html: `
+        <h4>Dear ${studentApplication.studentName}</h4>
+        <p>Your application for residence at a NWU Mafikeng Residence has been submitted. Please login to Bloma to view any updates.</p>
+        <p>Regards</p>
+        NWU MFK Residence Management`,
+      };
+  
+      sendMail(mailOptions).then((result)=>{
+        console.log(result);
+      }).catch((err)=>{
+        console.log(err);
+      });
 
       return res.redirect("/student/dashboard");
     }

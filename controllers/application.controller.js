@@ -94,7 +94,11 @@ async function apply(req, res) {
       NWU MFK Residence Management`,
     };
 
-    sendMail(mailOptions);
+    sendMail(mailOptions).then((result)=>{
+      console.log(result);
+    }).catch((err)=>{
+      console.log(err);
+    });
 
     return res.redirect("/student/dashboard");
   } catch (err) {
@@ -227,7 +231,11 @@ async function updateApplication(req, res) {
       NWU MFK Residence Management`,
     };
 
-    sendMail(mailOptions);
+    sendMail(mailOptions).then((result)=>{
+      console.log(result);
+    }).catch((err)=>{
+      console.log(err);
+    });
 
     return res.redirect("/admin/dashboard");
   } catch (err) {

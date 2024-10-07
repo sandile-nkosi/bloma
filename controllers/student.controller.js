@@ -156,7 +156,11 @@ async function register(req, res) {
       NWU MFK Residence Management`,
     };
 
-    sendMail(mailOptions);
+    sendMail(mailOptions).then((result)=>{
+      console.log(result);
+    }).catch((err)=>{
+      console.log(err);
+    });
     errorMsg = "";
     res.redirect("/student/login");
   } catch (err) {
@@ -244,7 +248,11 @@ async function sendOtp(req, res) {
       NWU MFK Residence Management`,
     };
 
-    sendMail(mailOptions);
+    sendMail(mailOptions).then((result)=>{
+      console.log(result);
+    }).catch((err)=>{
+      console.log(err);
+    });
 
     res.redirect("/student/forgot-password");
     console.log("otp sent");
