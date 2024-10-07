@@ -527,6 +527,13 @@
     padding: 10px 0;
   }
 
+  .login-card.register {
+    margin: 0;
+    height: 1000px;
+    width: 450px;
+    padding: 10px 0;
+  }
+
   .icon-box {
     height: 80px;
     width: 80px;

@@ -245,12 +245,16 @@ footer img {
   flex-direction: column;
   border: none;
   border-radius: 20px;
-  height: 70rem;
+  height: 35rem;
   width: 500px;
   margin: 0 auto;
   background: linear-gradient(130deg, #6C3D91E6 2%, #00889C77 98%);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   text-align: center;
+}
+
+.login-card.register {
+  height: 70rem;
 }
 
 

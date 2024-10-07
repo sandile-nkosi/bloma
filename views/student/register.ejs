@@ -38,7 +38,7 @@
               <label for="email2">Confirm Email</label>
               <input type="email" name="email2" id="email2" required>  
               <label for="studentNum">Student number</label>
-              <input type="number" name="studentNum" id="studentNum" required>  
+              <input type="number" name="studentNum" id="studentNum" required onKeyPress="if(this.value.length==8) return false;">  
               <label for="firstName">First Name</label>
               <input type="text" name="firstName" id="firstName" required>  
               <label for="lastName">Last Name</label>
