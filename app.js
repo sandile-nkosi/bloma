@@ -55,7 +55,7 @@ mongoose.connect(database).then(()=>{
     console.error('Database connection error', err);
 });
 
-const PORT = process.env.PORT || 3000 || 80|| 443;
+const PORT = process.env.PORT || 443;
 
 app.listen(PORT, ()=>{
     console.log(`listening on port ${PORT}`);
