@@ -47,6 +47,10 @@ app.use('/residences', residenceRoutes);
 app.use('/application', applicationRoutes);
 app.use('/admin', adminRoutes);
 
+app.use((req, res)=>{
+    res.render("shared/404");
+});
+
 
 // Database connection
 mongoose.connect(database).then(()=>{

@@ -40,6 +40,10 @@ async function addResidence(req, res) {
       createdBy: student._id,
     }).exec();
 
+    if(!student.applied){
+      return res.redirect("/application/apply");
+    }
+
     if (student.applications == 0) {
       await Application.findOneAndUpdate(
         {
