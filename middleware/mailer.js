@@ -21,6 +21,9 @@ async function sendMail(mailOptions) {
 
     const transporter = nodemailer.createTransport({
       service: process.env.SERVICE, 
+      host: process.env.HOST,
+      port: 465,
+      secure: true,
       auth: {
         type: process.env.TYPE,
         user: process.env.USER,
