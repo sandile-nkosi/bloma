@@ -10,7 +10,7 @@ function getLogin(req, res) {
   if (req.session.user && !req.session.isAdmin) {
     res.redirect("/student/dashboard");
   } else {
-    res.render("student/login", {errorMsg});
+    res.render("student/login", { errorMsg });
   }
 }
 
@@ -23,7 +23,6 @@ async function login(req, res, next) {
     errorMsg = "";
     const existingStudent = await Student.findOne({ email: email }).exec();
     if (!existingStudent) {
-      console.log("No user found");
       errorMsg = "No user found";
       return res.redirect("/student/login");
     }
@@ -34,11 +33,10 @@ async function login(req, res, next) {
     );
 
     if (!passwordMatch) {
-      console.log("Password Incorrect");
       errorMsg = "Password Incorrect";
       return res.redirect("/student/login");
     }
-    
+
     req.session.user = {
       id: existingStudent._id,
       email: existingStudent.email,
@@ -109,7 +107,7 @@ async function register(req, res) {
     !email.includes("@")
   ) {
     console.log("Incorrect data");
-    errorMsg = 'Incorrect data. Please try again';
+    errorMsg = "Incorrect data. Please try again";
     return res.redirect("/student/register");
   }
 
@@ -122,9 +120,8 @@ async function register(req, res) {
     if (existingStudentEmail || existingStudentNumber) {
       errorMsg = "Email or Student number already exists";
       console.log(errorMsg);
-      return res.render("student/register", {errorMsg});
+      return res.render("student/register", { errorMsg });
     }
-    
 
     const hashedPassword = await bcrypt.hash(password, 12);
 
@@ -156,11 +153,13 @@ async function register(req, res) {
       NWU MFK Residence Management`,
     };
 
-    sendMail(mailOptions).then((result)=>{
-      console.log(result);
-    }).catch((err)=>{
-      console.log(err);
-    });
+    sendMail(mailOptions)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     errorMsg = "";
     res.redirect("/student/login");
   } catch (err) {
@@ -195,7 +194,7 @@ function getRegister(req, res) {
   if (req.session.user && !req.session.isAdmin) {
     res.redirect("/student/dashboard");
   } else {
-    res.render("student/register", {errorMsg});
+    res.render("student/register", { errorMsg });
   }
 }
 
@@ -208,9 +207,19 @@ function getForgotPassword(req, res) {
 
 async function sendOtp(req, res) {
   const studentEmail = req.body.email;
-  const generatedOtp = randomstring.generate(6);
+  const generatedOtp = randomstring.generate(12);
+  let resetPasswordLink = `http://localhost:443/student/update-password/${studentEmail}/${generatedOtp}`;
 
   try {
+    const duplicateOtp = await Otp.findOne({
+      studentEmail: studentEmail,
+    }).exec();
+
+    if (duplicateOtp) {
+      console.log("Please wait 5 minutes before requesting a new OTP");
+      return res.redirect("/student/forgot-password");
+    }
+
     const existingStudent = await Student.findOne({
       email: studentEmail,
     }).exec();
@@ -226,7 +235,7 @@ async function sendOtp(req, res) {
       otp: hashedOtp,
       studentEmail: studentEmail,
       createdAt: Date.now(),
-      expiresAt: Date.now() + 120
+      expireAt: Date.now() + 0.5 * 24 * 60 * 60 * 8,
     };
 
     await Otp.create(otp);
@@ -236,54 +245,24 @@ async function sendOtp(req, res) {
       to: studentEmail,
       subject: "Password Reset",
       text: `
-      Forgot your password? It happens to the best of us.Your otp is ${generatedOtp}. The OTP is valid for 5 minutes.
+      Forgot your password? It happens to the best of us.Follow the link to reset your password ${resetPasswordLink}. The link is valid for 5 minutes.
       If you didn't request a password change, you can ignore this email.
       Regards,
       NWU MFK Residence Management`,
       html: `
-      <p>Forgot your bloma password? It happens to the best of us. Your otp is: 
-      <p style="color:red;font-size:25px;letter-spacing:2px;"><b>${generatedOtp}</b></p>. <p>The OTP is valid for 5 minutes.
+      <p>Forgot your bloma password? It happens to the best of us. Follow the link to reset your password: 
+      <p style="color:red;font-size:25px;letter-spacing:2px;"><b>${resetPasswordLink}</b></p>. <p>The link is valid for 5 minutes.
       If you didn't request a password change, you can ignore this email.</p>
       <p>Regards</p>
       NWU MFK Residence Management`,
     };
 
-    sendMail(mailOptions).then((result)=>{
-      console.log(result);
-    }).catch((err)=>{
-      console.log(err);
-    });
+    sendMail(mailOptions)
+      .catch((err) => {
+        console.log(err);
+      });
 
-    res.redirect("/student/forgot-password");
-    console.log("otp sent");
-  } catch (err) {
-    console.log(err);
-    return res.status(401).render("shared/401");
-  }
-}
-
-async function forgotPassword(req, res) {
-  const enteredOtp = req.body.otp;
-
-  const passwordMatch = await bcrypt.compare(
-    enteredOtp,
-    existingStudent.password
-  );
-
-  try {
-
-    const existingotp = await Otp.findOne({ email: email }).exec();
-    
-    const storedOtp = await Otp.findOne({ otp: enteredOtp }).exec();
-
-    if (!storedOtp) {
-      console.log("Otp Incorrect - try again");
-      return res.redirect("/student/forgot-password");
-    }
-
-    res.redirect("/student/update-password");
-
-    console.log("OTP correct - change passwords!");
+    res.redirect("/");
   } catch (err) {
     console.log(err);
     return res.status(401).render("shared/401");
@@ -291,50 +270,63 @@ async function forgotPassword(req, res) {
 }
 
 function getUpdatePassword(req, res) {
-  res.render("student/update-password");
+  const email = req.params.email;
+  const newOtp = req.params.otp;
+
+  res.render("student/update-password", { newOtp, email });
 }
 
-async function updateStudentPassword(req, res) {
-  const studentData = req.body;
-  const email = studentData.email.toLowerCase();
-  const password = studentData.password;
-  const confirmPassword = studentData.password2;
-
-  if (
-    !email ||
-    !password ||
-    password.trim() < 6 ||
-    password != confirmPassword ||
-    !email.includes("@")
-  ) {
-    console.log("Incorrect data");
-    return res.redirect("/student/update-password");
-  }
+async function updatePassword(req, res) {
+  const email = req.params.email;
+  const newOtp = req.params.otp;
+  const password = req.body.password;
+  const confirmPassword = req.body.password2;
 
   try {
-    const hashedPassword = await bcrypt.hash(password, 12);
+    const existingOtp = await Otp.findOne({
+      studentEmail: email,
+    }).exec();
 
-    await Student.findOneAndUpdate(
-      {
-        email: email,
-      },
-      {
-        $set: {
-          password: hashedPassword,
+    const otpMatch = await bcrypt.compare(newOtp, existingOtp.otp);
+
+    if (!otpMatch) {
+      console.log("Otp Incorrect - try again");
+      return res.redirect("/student/forgot-password");
+    }
+
+    if (
+      !password ||
+      password.trim() < 6 ||
+      password != confirmPassword
+    ) {
+      console.log("Incorrect data");
+      return res.redirect("/student/update-password");
+    }
+
+    try {
+      const hashedPassword = await bcrypt.hash(password, 12);
+
+      await Student.findOneAndUpdate(
+        {
+          email: email,
         },
-      },
-      {
-        new: true,
-        runValidators: true,
-      }
-    );
-
-    console.log("Password updated");
-
-    res.redirect("/");
+        {
+          $set: {
+            password: hashedPassword,
+          },
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+      res.redirect("/");
+    } catch (err) {
+      console.log(err);
+      return res.status(401).render("shared/401");
+    }
   } catch (err) {
     console.log(err);
-    return res.status(401).render("shared/401");
   }
 }
 
@@ -347,8 +339,7 @@ module.exports = {
   register,
   updateStudent,
   getForgotPassword,
-  forgotPassword,
   sendOtp,
   getUpdatePassword,
-  updateStudentPassword,
+  updatePassword,
 };

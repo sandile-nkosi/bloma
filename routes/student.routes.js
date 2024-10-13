@@ -10,7 +10,7 @@ router.get('/logout', studentController.logout);
 router.get('/register', studentController.getRegister);
 router.get('/dashboard', studentController.getDashboard);
 router.get('/forgot-password', studentController.getForgotPassword);
-router.get('/update-password', studentController.getUpdatePassword);
+router.get('/update-password/:email/:otp', studentController.getUpdatePassword);
 
 
 
@@ -18,9 +18,8 @@ router.get('/update-password', studentController.getUpdatePassword);
 router.post('/login', studentController.login);
 router.post('/register', avatarUpload,studentController.register);
 router.patch('/update', studentController.updateStudent);
-router.post('/forgot-password', studentController.forgotPassword);
 router.post('/forgot-password/otp', studentController.sendOtp);
-router.post('/update-password', studentController.updateStudentPassword);
+router.post('/update-password/:email/:otp', studentController.updatePassword);
 
 
 module.exports = router;
