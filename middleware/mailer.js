@@ -22,7 +22,7 @@ async function sendMail(mailOptions) {
     const transporter = nodemailer.createTransport({
       service: process.env.SERVICE, 
       host: process.env.HOST,
-      port: 465,
+      port: 587,
       secure: true,
       auth: {
         type: process.env.TYPE,
