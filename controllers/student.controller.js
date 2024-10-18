@@ -208,7 +208,7 @@ function getForgotPassword(req, res) {
 async function sendOtp(req, res) {
   const studentEmail = req.body.email;
   const generatedOtp = randomstring.generate(12);
-  let resetPasswordLink = `http://localhost:443/student/update-password/${studentEmail}/${generatedOtp}`;
+  let resetPasswordLink = `http://13.245.80.172:443/student/update-password/${studentEmail}/${generatedOtp}`;
 
   try {
     const duplicateOtp = await Otp.findOne({
@@ -251,14 +251,15 @@ async function sendOtp(req, res) {
       NWU MFK Residence Management`,
       html: `
       <p>Forgot your bloma password? It happens to the best of us. Follow the link to reset your password: 
-      <p style="color:red;font-size:25px;letter-spacing:2px;"><b>${resetPasswordLink}</b></p>. <p>The link is valid for 5 minutes.
+      <p style="color:red;font-size:25px;letter-spacing:2px;"><b>${resetPasswordLink}</b></p> <p>The link is valid for 5 minutes.
       If you didn't request a password change, you can ignore this email.</p>
       <p>Regards</p>
       NWU MFK Residence Management`,
     };
 
-    sendMail(mailOptions)
-      .catch((err) => {
+    sendMail(mailOptions).then((result)=>{
+      console.log(result);
+    }).catch((err) => {
         console.log(err);
       });
 

@@ -1,0 +1,13 @@
+#accordion{
+  margin: 2rem auto;
+  width: 75%;
+  font-family: "Righteous", sans-serif;
+}
+
+h2 {
+  font-family: Inria Sans;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 47.96px;
+  text-align: center
+}
