@@ -234,8 +234,10 @@ footer img {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  
   padding: 50px 0;
+  padding-bottom: 20px;
+  
 }
 
 .login-card {
@@ -254,7 +256,7 @@ footer img {
 }
 
 .login-card.register {
-  height: 70rem;
+  height: 65rem;
 }
 
 
@@ -262,7 +264,7 @@ footer img {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 7px solid rgba(24, 23, 21, 0.97);
+  border: 5px solid rgba(24, 23, 21, 0.97);
   border-radius: 50%;
   height: 100px;
   width: 100px;
