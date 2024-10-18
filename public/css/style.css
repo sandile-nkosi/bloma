@@ -264,7 +264,7 @@ footer img {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 7px solid rgba(24, 23, 21, 0.97);
+  border: 5px solid rgba(24, 23, 21, 0.97);
   border-radius: 50%;
   height: 100px;
   width: 100px;
