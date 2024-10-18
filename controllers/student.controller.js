@@ -321,6 +321,9 @@ async function updatePassword(req, res) {
           runValidators: true,
         }
       );
+      await Otp.deleteOne({
+        email: email
+      });
       res.redirect("/");
     } catch (err) {
       console.log(err);
