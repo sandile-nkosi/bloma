@@ -4,13 +4,24 @@ const Otp = require("../models/Otp");
 const bcrypt = require("bcryptjs");
 const sendMail = require("../middleware/mailer");
 const randomstring = require("randomstring");
-let errorMsg = "";
 
 function getLogin(req, res) {
   if (req.session.user && !req.session.isAdmin) {
     res.redirect("/student/dashboard");
   } else {
-    res.render("student/login", { errorMsg });
+    let sessionInputData = req.session.inputData;
+
+    if(!sessionInputData){
+      sessionInputData = {
+        hasError: false,
+        email: "",
+        password: ""
+      }
+    }
+
+    req.session.inputData = null;
+
+    res.render("student/login", { inputData: sessionInputData });
   }
 }
 
@@ -20,11 +31,20 @@ async function login(req, res, next) {
   const password = studentData.password;
 
   try {
-    errorMsg = "";
     const existingStudent = await Student.findOne({ email: email }).exec();
     if (!existingStudent) {
-      errorMsg = "No user found";
-      return res.redirect("/student/login");
+      req.session.inputData = {
+        hasError: true,
+        message: "User does not exist - please register",
+        email: email,
+        password: password
+      };
+
+      req.session.save(()=>{
+        res.redirect("/student/login");
+      });
+
+      return;
     }
 
     const passwordMatch = await bcrypt.compare(
@@ -33,8 +53,18 @@ async function login(req, res, next) {
     );
 
     if (!passwordMatch) {
-      errorMsg = "Password Incorrect";
-      return res.redirect("/student/login");
+      req.session.inputData = {
+        hasError: true,
+        message: "Password incorrect - please try again",
+        email: email,
+        password: password
+      };
+
+      req.session.save(()=>{
+        res.redirect("/student/login");
+      });
+
+      return;
     }
 
     req.session.user = {
@@ -42,7 +72,7 @@ async function login(req, res, next) {
       email: existingStudent.email,
     };
     req.session.save(() => {
-      return res.redirect("/student/dashboard");
+      res.redirect("/student/dashboard");
     });
   } catch (err) {
     console.log(err);
@@ -84,6 +114,52 @@ function logout(req, res) {
   res.redirect("/");
 }
 
+async function getDashboard(req, res) {
+  if (!req.session.user || req.session.user.isAdmin) {
+    return res.status(401).render("shared/401");
+  }
+
+  try {
+    const loggedInStudent = req.session.user.id;
+    const student = await Student.findById(loggedInStudent).exec();
+    const studentApplication = await Application.findOne({
+      createdBy: loggedInStudent,
+    });
+
+    res.render("student/dashboard", {
+      studentApplication,
+      student,
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(401).render("shared/401");
+  }
+}
+
+function getRegister(req, res) {
+  if (req.session.user && !req.session.isAdmin) {
+    res.redirect("/student/dashboard");
+  } else {
+    let sessionInputData = req.session.inputData;
+
+    if(!sessionInputData){
+      sessionInputData = {
+        hasError: false,
+        email: "",
+        email2: "",
+        studentNum: null,
+        firstName: "",
+        lastName: "",
+        phone: null,
+      }
+    }
+
+    req.session.inputData = null;
+
+    res.render("student/register", { inputData: sessionInputData });
+  }
+}
+
 async function register(req, res) {
   const studentData = req.body;
   const email = studentData.email.toLowerCase();
@@ -95,7 +171,6 @@ async function register(req, res) {
   const phone = studentData.phone;
   const password = studentData.password;
   const confirmPassword = studentData.password2;
-  errorMsg = "";
 
   if (
     !email ||
@@ -106,9 +181,23 @@ async function register(req, res) {
     password != confirmPassword ||
     !email.includes("@")
   ) {
-    console.log("Incorrect data");
-    errorMsg = "Incorrect data. Please try again";
-    return res.redirect("/student/register");
+    req.session.inputData = {
+      hasError: true,
+      message: "Incorrect data - please check all fields",
+      email: email,
+      email2: confirmEmail,
+      studentNum: studentNum,
+      firstName: firstName,
+      lastName: lastName,
+      phone: phone,
+    }
+
+
+    req.session.save(()=>{
+      res.redirect("/student/register")
+    });
+
+    return; 
   }
 
   try {
@@ -118,9 +207,22 @@ async function register(req, res) {
     }).exec();
 
     if (existingStudentEmail || existingStudentNumber) {
-      errorMsg = "Email or Student number already exists";
-      console.log(errorMsg);
-      return res.render("student/register", { errorMsg });
+      req.session.inputData = {
+        hasError: true,
+        message: "Email or Student number already exists - please try signing in",
+        email: email,
+        email2: confirmEmail,
+        studentNum: studentNum,
+        firstName: firstName,
+        lastName: lastName,
+        phone: phone,
+      }
+
+      req.session.save(()=>{
+        res.redirect("/student/register");
+      });
+
+      return; 
     }
 
     const hashedPassword = await bcrypt.hash(password, 12);
@@ -154,13 +256,9 @@ async function register(req, res) {
     };
 
     sendMail(mailOptions)
-      .then((result) => {
-        console.log(result);
-      })
       .catch((err) => {
         console.log(err);
       });
-    errorMsg = "";
     res.redirect("/student/login");
   } catch (err) {
     console.log(err);
@@ -168,41 +266,22 @@ async function register(req, res) {
   }
 }
 
-async function getDashboard(req, res) {
-  if (!req.session.user || req.session.user.isAdmin) {
-    return res.status(401).render("shared/401");
-  }
-
-  try {
-    const loggedInStudent = req.session.user.id;
-    const student = await Student.findById(loggedInStudent).exec();
-    const studentApplication = await Application.findOne({
-      createdBy: loggedInStudent,
-    });
-
-    res.render("student/dashboard", {
-      studentApplication,
-      student,
-    });
-  } catch (err) {
-    console.log(err);
-    return res.status(401).render("shared/401");
-  }
-}
-
-function getRegister(req, res) {
-  if (req.session.user && !req.session.isAdmin) {
-    res.redirect("/student/dashboard");
-  } else {
-    res.render("student/register", { errorMsg });
-  }
-}
-
 function getForgotPassword(req, res) {
   if (req.session.user || req.session.isAdmin) {
     return res.status(401).render("shared/401");
   }
-  res.render("student/forgot-password");
+  let sessionInputData = req.session.inputData;
+
+  if(!sessionInputData){
+    sessionInputData = {
+      hasError: false,
+      email: "",
+    }
+  }
+
+  req.session.inputData = null;
+
+  res.render("student/forgot-password", { inputData: sessionInputData });
 }
 
 async function sendOtp(req, res) {
@@ -216,8 +295,17 @@ async function sendOtp(req, res) {
     }).exec();
 
     if (duplicateOtp) {
-      console.log("Please wait 5 minutes before requesting a new OTP");
-      return res.redirect("/student/forgot-password");
+      req.session.inputData = {
+        hasError: true,
+        message: "Please wait 5 minutes before requesting a new OTP",
+        email: studentEmail,
+      };
+
+      req.session.save(()=>{
+        res.redirect("/student/forgot-password");
+      });
+
+      return;
     }
 
     const existingStudent = await Student.findOne({
@@ -225,8 +313,17 @@ async function sendOtp(req, res) {
     }).exec();
 
     if (!existingStudent) {
-      console.log("Email or Student number does not exist");
-      return res.redirect("/student/forgot-password");
+      req.session.inputData = {
+        hasError: true,
+        message: "Email or Student number does not exist",
+        email: studentEmail,
+      };
+
+      req.session.save(()=>{
+        res.redirect("/student/forgot-password");
+      })
+
+      return; 
     }
 
     const hashedOtp = await bcrypt.hash(generatedOtp, 12);
@@ -257,9 +354,7 @@ async function sendOtp(req, res) {
       NWU MFK Residence Management`,
     };
 
-    sendMail(mailOptions).then((result)=>{
-      console.log(result);
-    }).catch((err) => {
+    sendMail(mailOptions).catch((err) => {
         console.log(err);
       });
 
@@ -274,7 +369,19 @@ function getUpdatePassword(req, res) {
   const email = req.params.email;
   const newOtp = req.params.otp;
 
-  res.render("student/update-password", { newOtp, email });
+  let sessionInputData = req.session.inputData;
+
+  if(!sessionInputData){
+    sessionInputData = {
+      hasError: false,
+      password: "",
+      password2: ""
+    }
+  }
+
+  req.session.inputData = null;
+
+  res.render("student/update-password", { newOtp, email, inputData: sessionInputData });
 }
 
 async function updatePassword(req, res) {
@@ -291,8 +398,18 @@ async function updatePassword(req, res) {
     const otpMatch = await bcrypt.compare(newOtp, existingOtp.otp);
 
     if (!otpMatch) {
-      console.log("Otp Incorrect - try again");
-      return res.redirect("/student/forgot-password");
+      req.session.inputData = {
+        hasError: true,
+        message: "OTP Incorrect - please try again or request a new OTP",
+        password: password,
+        password2: confirmPassword
+      };
+
+      req.session.save(()=>{
+        res.redirect(`/student/update-password/${email}/${newOtp}`);
+      });
+
+      return; 
     }
 
     if (
@@ -300,8 +417,18 @@ async function updatePassword(req, res) {
       password.trim() < 6 ||
       password != confirmPassword
     ) {
-      console.log("Incorrect data");
-      return res.redirect("/student/update-password");
+      req.session.inputData = {
+        hasError: true,
+        message: "Incorrect data - please check that the passwords match",
+        password: password,
+        password2: confirmPassword
+      };
+
+      req.session.save(()=>{
+        res.redirect(`/student/update-password/${email}/${newOtp}`);
+      });
+
+      return;
     }
 
     try {

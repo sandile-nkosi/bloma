@@ -94,9 +94,7 @@ async function apply(req, res) {
       NWU MFK Residence Management`,
     };
 
-    sendMail(mailOptions).then((result)=>{
-      console.log(result);
-    }).catch((err)=>{
+    sendMail(mailOptions).catch((err)=>{
       console.log(err);
     });
 
@@ -231,9 +229,7 @@ async function updateApplication(req, res) {
       NWU MFK Residence Management`,
     };
 
-    sendMail(mailOptions).then((result)=>{
-      console.log(result);
-    }).catch((err)=>{
+    sendMail(mailOptions).catch((err)=>{
       console.log(err);
     });
 
