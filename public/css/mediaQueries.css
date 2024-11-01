@@ -1,1324 +1,1291 @@
 @media (max-width: 1150px) {
-  .navbar {
-    height: 90px;
-    padding: 0;
-  }
-
-  .navbar img {
-    height: 110px;
-    width: 90px;
-    margin: 0;
-  }
-
-  .navbar-text {
-    margin: 0;
-  }
-
-  .navbar-text p {
-    font-size: 13px;
-  }
-
-  .navbar h1 {
-    font-size: 45px;
-  }
-
-  .login-btn {
-    height: 50px;
-    width: 170px;
-  }
-
-  .login-btn div {
-    font-size: 18px;
-  }
-
-  .icon-large {
-    font-size: 40px;
-  }
-
-  .content {
-    height: 550px;
-  }
-
-  .content .overlay {
-    height: 50%;
-  }
-
-  .overlay-text {
-    width: 600px;
-  }
-
-  .text-box {
-    height: 50%;
-    font-size: 20px;
-    padding: 70px 100px;
-  }
-
-  .explore-text {
-    margin: 0;
-    padding: 0;
-  }
-
-  .explore .col-lg-6.position-relative {
-    width: 450px;
-  }
-
-  .explore-text h1 {
-    font-size: 20px;
-  }
-
-  .explore-text p {
-    font-size: 18px;
-    margin-left: 0;
-  }
-
-  .about {
-    margin-right: 0;
-  }
-
-  /* applicationPage */
-  .navbar-title {
-    left: 60%;
-  }
-}
-
-@media (max-width: 999px) {
-  .navbar {
-    height: 90px;
-    padding: 0;
-  }
-
-  .navbar img {
-    height: 110px;
-    width: 90px;
-    margin: 0;
-  }
-
-  .navbar-text {
-    margin: 0;
-  }
-
-  .navbar-text p {
-    font-size: 13px;
-  }
-
-  .navbar h1 {
-    font-size: 45px;
-  }
-
-  .login-btn {
-    height: 50px;
-    width: 170px;
-  }
-
-  .login-btn div {
-    font-size: 18px;
-  }
-
-  .icon-large {
-    font-size: 40px;
-  }
-
-  .content {
-    height: 550px;
-  }
-
-  .content .overlay {
-    height: 50%;
-  }
-
-  .overlay-text {
-    width: 600px;
-  }
-
-  .text-box {
-    height: 50%;
-    font-size: 20px;
-    padding: 70px 100px;
-  }
-
-  .explore-text {
-    margin: 0;
-    padding: 0;
-  }
-
-  .explore .col-lg-6.position-relative {
-    width: 450px;
-  }
-
-  .explore-text h1 {
-    font-size: 20px;
-  }
-
-  .explore-text p {
-    font-size: 18px;
-    margin-left: 0;
-  }
-
-  .about {
-    margin-right: 0;
-  }
-
-  /* applicationPage */
-  .navbar-title {
-    left: 60%;
-  }
-
-  .backarrow {
-    top: 20px;
-    left: 40px;
-  }
-
-  .application-container h3 {
-    font-size: 30px;
-  }
-
-  .application-container i {
-    font-size: 35px;
-    margin-right: -18px;
-  }
-
-  .application-container p {
-    font-size: 20px;
-  }
-
-  .application-text .heading {
-    font-size: 20px;
-  }
-
-  .app2 {
-    padding: 10px;
-  }
-
-  .year-form p,
-  .study-form p,
-  .disab-form p,
-  .resid-form p,
-  .grad-form p {
-    font-size: 25px;
-  }
-
-  .year-form input[type=radio],
-  .study-form input[type=radio],
-  .disab-form input[type=radio] {
-    height: 20px;
-    width: 20px;
-  }
-
-  .year-form label,
-  .study-form label,
-  .disab-form label {
-    font-size: 20px;
-  }
-  .study-form label{
-    font-size: 16px;
-  }
-
-  .academic-box p,
-  .campus-box p {
-    font-size: 20px;
-  }
-
-  .academic-box,
-  .year-form,
-  .disab,
-  .campus-box {
-    margin-top: -10px;
-  }
-
-  .disab-input {
-    width: 500px !important;
-  }
-
-  .academic-box,
-  .campus-box {
-    padding: 20px 150px;
-  }
-
-  .resid-form label {
-    font-size: 18px;
-    margin-right: 7px;
-  }
-
-  .custom-select-wrapper {
-    padding: 0;
-  }
-
-  .custom-select-trigger {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 160px;
-    padding-left: 0;
-    margin-left: -5px;
-  }
-
-  .custom-select-trigger span,
-  .custom-select-trigger i {
-    font-size: 15px;
-  }
-
-  .grad-input {
-    width: 500px;
-    margin: 0 0 50px 0;
-  }
-
-  .link-box {
-    width: 600px;
-  }
-
-  #upload-button,
-  .back-btn,
-  .submit-btn {
-    font-size: 25px;
-    width: 190px;
-  }
-}
-
-@media (max-width: 768px) {
-  .navbar {
-    height: 90px;
-    padding: 0;
-  }
-
-  .navbar img {
-    height: 80px;
-    width: 70px;
-    margin: 0;
-  }
-
-  .navbar-text {
-    margin: 0;
-  }
-
-  .navbar-text p {
-    font-size: 11px;
-  }
-
-  .navbar h1 {
-    font-size: 40px;
-  }
-
-  .login-btn {
-    height: 50px;
-    width: 140px;
-  }
-
-  .login-btn div {
-    font-size: 15px;
-  }
-
-  .icon-large {
-    font-size: 35px;
-  }
-
-  .content {
-    height: 450px;
-  }
-
-  .content .overlay {
-    height: 50%;
-  }
-
-  .overlay-text {
-    width: 400px;
-  }
-
-  .text-box {
-    height: 50%;
-    font-size: 16px;
-    padding: 40px 100px;
-  }
-
-  .explore .row {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .explore-text {
-    order: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 80%;
-    margin: 0;
-    padding: 0;
-  }
-
-  .explore .col-lg-6.position-relative {
-    order: 2;
-    height: 50vh;
-    width: 800px;
-  }
-
-  .explore-text h1 {
-    font-size: 30px;
-  }
-
-  .explore-text p {
-    font-size: 20px;
-    text-align: center;
-  }
-  .explore-btn{
-    width: 220px !important;
-    height: 60px !important;
-  }
-  .about {
-    margin-right: 0;
-  }
-
-  /* applicationPage */
-  .application-container {
-    overflow-x: hidden;
-  }
-
-  .application-text {
-    padding: 15px;
-  }
-  .study-form .programs{
-    width: 33%;
-  }
-
-  .navbar-title {
-    left: 64%;
-  }
-
-  .backarrow {
-    top: 20px;
-    left: 40px;
-  }
-
-  .note-box {
-    width: 320px;
-  }
-
-  .application-container h3 {
-    font-size: 20px;
-  }
-
-  .application-container i {
-    font-size: 24px;
-    margin-right: -15px;
-  }
-
-  .application-container p {
-    font-size: 16px;
-  }
-
-  .application-text .heading {
-    font-size: 16px;
-  }
-
-  .app2 {
-    padding: 10px;
-  }
-
-  .app2 h2 {
-    font-size: 20px;
-  }
-
-  .year-form p,
-  .study-form p,
-  .disab-form p,
-  .resid-form p,
-  .grad-form p {
-    font-size: 16px;
-  }
-
-  .year-form input[type=radio],
-  .study-form input[type=radio],
-  .disab-form input[type=radio] {
-    height: 11px;
-    width: 11px;
-  }
-
-  .year-form label,
-  .study-form label,
-  .disab-form label,
-  .resid-form label {
-    font-size: 17px;
-  }
-  .study-form label{
-    font-size: 15px !important;
-  }
-  .academic-box p,
-  .campus-box p {
-    font-size: 14px;
-  }
-
-  .academic-box,
-  .year-form,
-  .disab,
-  .campus-box {
-    margin-top: -10px;
-  }
-
-  .col-md-6 input[type=radio] {
-    margin-right: 0;
-  }
-
-  .col label {
-    margin-left: -25px;
-  }
-
-  .disab-input {
-    width: 100%;
-  }
-
-  .campus-box {
-    padding: 10px;
-  }
-
-  .col-md-6 {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .custom-select-trigger {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 200px !important;
-    padding-left: 0;
-    margin-left: 15px;
-    padding: 0px 5px !important;
-  }
-
-  .custom-select-trigger span,
-  .custom-select-trigger i {
-    font-size: 17px;
-  }
-  .custom-select-trigger i{
-    margin-right: 0px !important;
-  }
-  .custom-select-options {
-    width: fit-content;
-    margin-left: 16px;
-  }
-
-  .custom-select-options span {
-    font-size: 14px;
-  }
-
-  .grad-input {
-    width: 100%;
-    margin: 0 0 50px 0;
-  }
-
-  .link-box {
-    width: 70% !important;
-    margin: 0 50px !important;
-  }
-
-  #upload-button,
-  .back-btn,
-  .submit-btn {
-    display: flex;
-    justify-content: space-evenly;
-    font-size: 20px;
-    width: 180px;
-  }
-
-  /* loginPage */
-  .login-card {
-    margin: 0;
-    height: 340px;
-    width: 450px;
-    padding: 10px 0;
-  }
-
-  .login-card.register {
-    margin: 0;
-    height: 1000px;
-    width: 450px;
-    padding: 10px 0;
-  }
-
-  .icon-box {
-    height: 80px;
-    width: 80px;
-  }
-
-  .login-card i {
-    font-size: 60px;
-  }
-
-  .login-card label {
-    font-size: 15px;
-  }
-
-  .login-card input {
-    height: 34px;
-  }
-
-  .login-card select {
-    height: 42px;
-  }
-
-  .login-card button[type=submit] {
-    height: 35px;
-    width: 99px;
-    padding: 0;
-  }
-
-  .back-arrow {
-    top: 100px;
-    left: 30px;
-  }
-}
-
-@media (max-width: 576px) {
-  .navbar {
-    height: 80px;
-    padding: 0;
-  }
-
-  .navbar img {
-    height: 70px;
-    width: 60px;
-    margin: 0;
-  }
-
-  .navbar-text {
-    margin: 0;
-  }
-
-  .navbar-text p {
-    font-size: 8px;
-  }
-
-  .navbar h1 {
-    font-size: 33px;
-  }
-
-  .login-btn {
-    height: 40px;
-    width: 100px;
-  }
-
-  .login-btn div {
-    font-size: 12px;
-  }
-
-  .icon-large {
-    font-size: 20px;
-  }
-
-  .content {
-    height: 450px;
-  }
-
-  .content .overlay {
-    height: 50%;
-  }
-
-  .overlay-text {
-    width: 300px;
-  }
-
-  .text-box {
-    height: 50%;
-    font-size: 14px;
-    padding: 40px 70px;
-  }
-
-  .explore .row {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .explore-text {
-    order: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 70%;
-    margin: 0;
-    padding: 0;
-  }
-
-  .position-relative {
-    order: 2;
-  }
-
-  .explore .col-lg-6.position-relative {
-    width: 95% !important;
-    height: 300px !important;
-  }
-
-  .explore-text h1 {
-    font-size: 20px;
-  }
-
-  .explore-text p {
-    font-size: 16px;
-  }
-
-  .about {
-    margin-right: 0;
-  }
-
-  /* applicationPage */
-  .application-container {
-    overflow-x: hidden;
-  }
-
-  .application-text {
-    padding: 15px;
-  }
-
-
-  .navbar-title {
-    left: 64%;
-  }
-
-  .backarrow {
-    top: 20px;
-    left: 40px;
-  }
-
-  .note-box {
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .application-container h3 {
-    font-size: 20px;
-  }
-
-  .application-container i {
-    font-size: 24px;
-    margin-right: -15px;
-  }
-
-  .application-container p {
-    font-size: 16px;
-  }
-
-  .application-text .heading {
-    font-size: 16px;
-  }
-
-  .app2 {
-    padding: 10px;
-  }
-
-  .app2 h2 {
-    font-size: 20px;
-  }
-
-  .year-form p,
-  .study-form p,
-  .disab-form p,
-  .resid-form p,
-  .grad-form p {
-    font-size: 16px;
-  }
-
-  .year-form input[type=radio],
-  .study-form input[type=radio],
-  .disab-form input[type=radio] {
-    height: 10px;
-    width: 10px;
-  }
-
-  .year-form label,
-  .study-form label,
-  .disab-form label,
-  .resid-form label {
-    font-size: 14px;
-  }
-
-  .academic-box p,
-  .campus-box p {
-    font-size: 12px;
-  }
-
-  .academic-box,
-  .year-form,
-  .disab,
-  .campus-box {
-    margin-top: -10px;
-  }
-
-  .disab-input {
-    width: 100% !important;
-  }
-
-  .campus-box {
-    padding: 10px;
-  }
-
-  .study-form .col-md-6 {
-    display: flex;
-    align-items: start;
-    flex-direction: column;
-  }
-  .study-form .programs{
-    width: 100% !important;
-    margin-bottom: 10px;
-  }
-
-  .custom-select-trigger span,
-  .custom-select-trigger i {
-    font-size: 14px;
-  }
-
-  .custom-select-options {
-    width: fit-content;
-    margin-left: 15px;
-  }
-
-  .custom-select-options span {
-    font-size: 12px;
-  }
-
-  .grad-input {
-    width: 100% !important;
-    margin: 0 0 50px 0;
-  }
-
-  .link-box {
-    width: 100%;
-    margin: 0;
-  }
-
-  #upload-button,
-  .back-btn,
-  .submit-btn {
-    display: flex;
-    justify-content: space-evenly;
-    font-size: 20px;
-    width: 160px;
-  }
-
-  /* loginPage */
-  .login-container {
-    padding: 0;
-  }
-
-  .icon-box {
-    height: 60px;
-    width: 60px;
-  }
-
-  .login-card {
-    height: 320px;
-    width: 400px;
-    margin: 0;
-  }
-
-  .login-card i {
-    font-size: 50px;
-  }
-
-  .login-card label {
-    font-size: 14px;
-  }
-
-  .login-card input {
-    height: 30px;
-  }
-
-  .login-card select {
-    height: 34px;
-    font-size: 11px;
-  }
-
-  .login-card button[type=submit] {
-    height: 35px;
-    width: 99px;
-    padding: 0;
-  }
-
-  .back-arrow {
-    top: 90px;
-    left: 40px;
-  }
-
-  /* popUp */
-  .pop-head h3 {
-    font-size: 19px;
-    padding: 5px;
-  }
-  .close {
-    font-size: 15px;
-  }
-  .pop-body p {
-    font-size: 16px;
-    padding: 0;
-  }
-  .confirm-btn {
-    height: 40px;
-    width: 118px;
-    font-size: 19px;
-  }
-}
-@media (max-width: 476px) {
-  .navbar {
-    height: 80px;
-    padding: 0;
-  }
-
-  .navbar img {
-    height: 50px;
-    width: 40px;
-    margin: 0;
-  }
-
-  .navbar-text {
-    margin: 0;
-  }
-
-  .navbar-text p {
-    font-size: 5px;
-  }
-
-  .navbar h1 {
-    font-size: 25px;
-  }
-
-  .login-btn {
-    height: 30px;
-    width: 80px;
-  }
-
-  .login-btn div {
-    font-size: 7px;
-  }
-
-  .icon-large {
-    font-size: 18px;
-  }
-
-  .content {
-    height: 400px;
-  }
-
-  .content .overlay {
-    height: 50%;
-  }
-
-  .overlay-text {
-    width: 280px;
-  }
-
-  .text-box {
-    height: 50%;
-    font-size: 13px;
-    padding: 30px 30px;
-  }
-
-  .explore .row {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .explore-text {
-    order: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 80%;
-    margin: 0;
-    padding: 0;
-  }
-
-  .position-relative {
-    order: 2;
-  }
-
-  .explore .col-lg-6.position-relative {
-    width: 350px;
-  }
-
-  .explore-btn {
-    height: 75px;
-    width: 200px;
-    font-size: 18px;
-  }
-
-  .explore-text h1 {
-    font-size: 20px;
-  }
-
-  .explore-text p {
-    font-size: 16px;
-  }
-
-  .about {
-    margin-right: 0;
-  }
-
-  /* applicationPage */
-  .navbar-title {
-    left: auto;
-    right: 0;
-  }
-
-  .backarrow {
-    top: 20px;
-    left: 40px;
-  }
-
-  .application-container h3 {
-    font-size: 13px;
-    text-align: center;
-  }
-
-  .application-container i {
-    font-size: 24px;
-    margin-right: -15px;
-  }
-
-  .application-container p {
-    font-size: 16px;
-  }
-
-  .application-text .heading {
-    font-size: 16px;
-  }
-
-  .app2 {
-    padding: 10px;
-  }
-
-  .year-form p,
-  .study-form p,
-  .disab-form p,
-  .resid-form p,
-  .grad-form p {
-    font-size: 20px;
-  }
-
-  .year-form input[type=radio],
-  .study-form input[type=radio],
-  .disab-form input[type=radio] {
-    height: 17px;
-    width: 17px;
-  }
-
-  .year-form label,
-  .study-form label,
-  .disab-form label,
-  .resid-form label {
-    font-size: 18px;
-  }
-
-  .academic-box {
-    padding: 10px;
-  }
-
-  .academic-box p,
-  .campus-box p {
-    font-size: 16px;
-  }
-
-  .academic-box,
-  .year-form,
-  .disab,
-  .campus-box {
-    margin-top: -10px;
-  }
-
-  .disab-input {
-    width: 450px;
-  }
-
-  .campus-box {
-    padding: 10px;
-  }
-
-  .col-md-6 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .custom-select-trigger {
-    width: 180px !important;
-  }
-
-  .custom-select-options span,
-  .custom-select-trigger i {
-    font-size: 14px;
-  }
-
-  .grad-input {
-    width: 100%;
-    margin: 0 0 50px 0;
-  }
-
-  .link-box {
-    width: 100%;
-  }
-
-  #upload-button,
-  .back-btn,
-  .submit-btn {
-    display: flex;
-    justify-content: space-evenly;
-    font-size: 20px;
-    width: 160px;
-  }
-
-  /* loginPage */
-  .login-container {
-    padding: 0;
-  }
-
-  .icon-box {
-    height: 60px;
-    width: 60px;
-  }
-
-  .login-card {
-    height: 380px;
-    width: 400px;
-    margin: 0;
-  }
-
-  .login-card.register {
-    height: 840px;
-    width: 320px;
-    margin: 0;
-  }
-
-  .login-card i {
-    font-size: 50px;
-  }
-
-  .login-card label {
-    font-size: 14px;
-  }
-
-  .login-card input {
-    height: 30px;
-  }
-
-  .login-card select {
-    height: 33px;
-    font-size: 10px;
+    .navbar {
+      height: 90px;
+      padding: 0;
+    }
   
+    .navbar img {
+      height: 110px;
+      width: 90px;
+      margin: 0;
+    }
+  
+    .navbar-text {
+      margin: 0;
+    }
+  
+    .navbar-text p {
+      font-size: 13px;
+    }
+  
+    .navbar h1 {
+      font-size: 45px;
+    }
+  
+    .login-btn {
+      height: 50px;
+      width: 170px;
+    }
+  
+    .login-btn div {
+      font-size: 18px;
+    }
+  
+    .icon-large {
+      font-size: 40px;
+    }
+  
+    .content {
+      height: 550px;
+    }
+  
+    .content .overlay {
+      height: 50%;
+    }
+  
+    .overlay-text {
+      width: 600px;
+    }
+  
+    .text-box {
+      height: 50%;
+      font-size: 20px;
+      padding: 70px 100px;
+    }
+  
+    .explore-text {
+      margin: 0;
+      padding: 0;
+    }
+  
+    .explore .col-lg-6.position-relative {
+      width: 450px;
+    }
+  
+    .explore-text h1 {
+      font-size: 20px;
+    }
+  
+    .explore-text p {
+      font-size: 18px;
+      margin-left: 0;
+    }
+  
+    .about {
+      margin-right: 0;
+    }
+  
+    /* applicationPage */
+    .navbar-title {
+      left: 60%;
+    }
   }
+  
+  @media (max-width: 999px) {
+    .navbar {
+      height: 90px;
+      padding: 0;
+    }
+  
+    .navbar img {
+      height: 110px;
+      width: 90px;
+      margin: 0;
+    }
+  
+    .navbar-text {
+      margin: 0;
+    }
+  
+    .navbar-text p {
+      font-size: 13px;
+    }
+  
+    .navbar h1 {
+      font-size: 45px;
+    }
+  
+    .login-btn {
+      height: 50px;
+      width: 170px;
+    }
+  
+    .login-btn div {
+      font-size: 18px;
+    }
+  
+    .icon-large {
+      font-size: 40px;
+    }
+  
+    .content {
+      height: 550px;
+    }
+  
+    .content .overlay {
+      height: 50%;
+    }
+  
+    .overlay-text {
+      width: 600px;
+    }
+  
+    .text-box {
+      height: 50%;
+      font-size: 20px;
+      padding: 70px 100px;
+    }
+  
+    .explore-text {
+      margin: 0;
+      padding: 0;
+    }
+  
+    .explore .col-lg-6.position-relative {
+      width: 450px;
+    }
+  
+    .explore-text h1 {
+      font-size: 20px;
+    }
+  
+    .explore-text p {
+      font-size: 18px;
+      margin-left: 0;
+    }
+  
+    .about {
+      margin-right: 0;
+    }
+  
+    /* applicationPage */
+    .navbar-title {
+      left: 60%;
+    }
+  
+    .backarrow {
+      top: 20px;
+      left: 40px;
+    }
+  
+    .application-container h3 {
+      font-size: 30px;
+    }
+  
+    .application-container i {
+      font-size: 35px;
+      margin-right: -18px;
+    }
+  
+    .application-container p {
+      font-size: 20px;
+    }
+  
+    .application-text .heading {
+      font-size: 20px;
+    }
+  
+    .app2 {
+      padding: 10px;
+    }
+  
+    .year-form p,
+    .study-form p,
+    .disab-form p,
+    .resid-form p,
+    .grad-form p {
+      font-size: 25px;
+    }
+  
+    .year-form input[type=radio],
+    .study-form input[type=radio],
+    .disab-form input[type=radio] {
+      height: 20px;
+      width: 20px;
+    }
+  
+    .year-form label,
+    .study-form label,
+    .disab-form label {
+      font-size: 20px;
+    }
+    .study-form label{
+      font-size: 16px;
+    }
+  
+    .academic-box p,
+    .campus-box p {
+      font-size: 20px;
+    }
+  
+    .academic-box,
+    .year-form,
+    .disab,
+    .campus-box {
+      margin-top: -10px;
+    }
+  
+    .disab-input {
+      width: 550px;
+    }
+  
+    .academic-box,
+    .campus-box {
+      padding: 20px 150px;
+    }
+  
+    .resid-form label {
+      font-size: 18px;
+      margin-right: 7px;
+    }
 
-  .login-card button[type=submit] {
-    height: 35px;
-    width: 99px;
-    padding: 0;
+    .custom-select-wrapper {
+      padding: 0;
+    }
+  
+    .custom-select-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 160px;
+      padding-left: 0;
+      margin-left: -5px;
+    }
+  
+    .custom-select-trigger span,
+    .custom-select-trigger i {
+      font-size: 15px;
+    }
+  
+    .grad-input {
+      width: 500px;
+      margin: 0 0 50px 0;
+    }
+  
+    .link-box {
+      width: 600px;
+    }
+  
+    #upload-button,
+    .back-btn,
+    .submit-btn {
+      font-size: 25px;
+      width: 190px;
+    }
   }
-
-  .back-arrow {
-    top: 120px;
-    left: 40px;
-  }
-
-  .back-arrow.register {
-    top: 120px;
-    left: 40px;
-  }
-
-  /* popUp */
-  .pop-head h3 {
-    font-size: 18px;
-    padding: 5px;
-  }
-  .close {
-    font-size: 14px;
-  }
-  .pop-body p {
-    font-size: 15px;
-    padding: 0;
-  }
-  .confirm-btn {
-    height: 33px;
-    width: 110px;
-    font-size: 15px;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .navbar{
-    height: 100px !important;
-  }
-  .navbar-text p {
-    font-size: 7px;
-  }
-  .login-btn div {
-    font-size: 9px;
-  }
-  .pop-head h3 {
-    font-size: 17px;
-    padding: 5px;
-  }
-  .close {
-    font-size: 13px;
-  }
-  .pop-body p {
-    font-size: 14px;
-    padding: 0;
-  }
-  .confirm-btn {
-    height: 30px;
-    width: 100px;
-    font-size: 14px;
-    margin: 0;
-  }
-}
-
-
-/* Staff */
-
-@media screen and (max-width:992px) {
-  .sub-head{
-      width: 90%;
-      margin-top: 10px;
+  
+  @media (max-width: 768px) {
+    .navbar {
+      height: 90px;
+      padding: 0;
+    }
+  
+    .navbar img {
+      height: 80px;
+      width: 70px;
+      margin: 0;
+    }
+  
+    .navbar-text {
+      margin: 0;
+    }
+  
+    .navbar-text p {
+      font-size: 11px;
+    }
+  
+    .navbar h1 {
+      font-size: 40px;
+    }
+  
+    .login-btn {
+      height: 50px;
+      width: 140px;
+    }
+  
+    .login-btn div {
+      font-size: 15px;
+    }
+  
+    .icon-large {
+      font-size: 35px;
+    }
+  
+    .content {
+      height: 450px;
+    }
+  
+    .content .overlay {
+      height: 50%;
+    }
+  
+    .overlay-text {
+      width: 400px;
+    }
+  
+    .text-box {
+      height: 50%;
+      font-size: 16px;
+      padding: 40px 100px;
+    }
+  
+    .explore .row {
       display: flex;
       flex-direction: column;
+    }
+  
+    .explore-text {
+      order: 1;
+      display: flex;
+      align-items: center;
       justify-content: center;
-      gap: 15px;
+      width: 80%;
+      margin: 0;
+      padding: 0;
+    }
+  
+    .explore .col-lg-6.position-relative {
+      order: 2;
+      height: 50vh;
+      width: 800px;
+    }
+  
+    .explore-text h1 {
+      font-size: 30px;
+    }
+  
+    .explore-text p {
+      font-size: 20px;
+      text-align: center;
+    }
+    .explore-btn{
+      width: 220px !important;
+      height: 60px !important;
+    }
+    .about {
+      margin-right: 0;
+    }
+  
+    /* applicationPage */
+    .application-container {
+      overflow-x: hidden;
+    }
+
+    .application-text {
+      padding: 15px;
+    }
+    .study-form .programs{
+      width: 33%;
+    }
+
+    .navbar-title {
+      left: 64%;
+    }
+  
+    .backarrow {
+      top: 20px;
+      left: 40px;
+    }
+
+    .note-box {
+      width: 320px;
+    }
+  
+    .application-container h3 {
+      font-size: 20px;
+    }
+  
+    .application-container i {
+      font-size: 24px;
+      margin-right: -15px;
+    }
+  
+    .application-container p {
+      font-size: 16px;
+    }
+  
+    .application-text .heading {
+      font-size: 16px;
+    }
+  
+    .app2 {
+      padding: 10px;
+    }
+
+    .app2 h2 {
+      font-size: 20px;
+    }
+  
+    .year-form p,
+    .study-form p,
+    .disab-form p,
+    .resid-form p,
+    .grad-form p {
+      font-size: 16px;
+    }
+  
+    .year-form input[type=radio],
+    .study-form input[type=radio],
+    .disab-form input[type=radio] {
+      height: 11px;
+      width: 11px;
+    }
+  
+    .year-form label,
+    .study-form label,
+    .disab-form label,
+    .resid-form label {
+      font-size: 17px;
+    }
+    .study-form label{
+      font-size: 15px !important;
+    }
+    .academic-box p,
+    .campus-box p {
+      font-size: 14px;
+    }
+  
+    .academic-box,
+    .year-form,
+    .disab,
+    .campus-box {
+      margin-top: -10px;
+    }
+
+    .col-md-6 input[type=radio] {
+      margin-right: 0;
+    }
+
+    .col label {
+      margin-left: -25px;
+    }
+  
+    .disab-input {
+      width: 100%;
+    }
+  
+    .campus-box {
+      padding: 10px;
+    }
+  
+    .col-md-6 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .custom-select-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 200px !important;
+      padding-left: 0;
+      margin-left: 15px;
+      padding: 0px 5px !important;
+    }
+  
+    .custom-select-trigger span,
+    .custom-select-trigger i {
+      font-size: 17px;
+    }
+    .custom-select-trigger i{
+      margin-right: 0px !important;
+    }
+    .custom-select-options {
+      width: fit-content;
+      margin-left: 16px;
+    }
+
+    .custom-select-options span {
+      font-size: 14px;
+    }
+  
+    .grad-input {
+      width: 100%;
+      margin: 0 0 50px 0;
+    }
+  
+    .link-box {
+      width: 100%;
+      margin: 0;
+    }
+  
+    #upload-button,
+    .back-btn,
+    .submit-btn {
+      display: flex;
+      justify-content: space-evenly;
+      font-size: 20px;
+      width: 180px;
+    }
+  
+    /* loginPage */
+    .login-card {
+      margin: 0;
+      height: 340px;
+      width: 450px;
+      padding: 10px 0;
+    }
+  
+    .icon-box {
+      height: 80px;
+      width: 80px;
+    }
+  
+    .login-card i {
+      font-size: 60px;
+    }
+  
+    .login-card label {
+      font-size: 15px;
+    }
+  
+    .login-card input {
+      height: 34px;
+    }
+  
+    .login-card button[type=submit] {
+      height: 35px;
+      width: 99px;
+      padding: 0;
+    }
+  
+    .back-arrow {
+      top: 100px;
+      left: 30px;
+    }
   }
-  .staff-nav-data{
-      font-size: 16px !important;
+  
+  @media (max-width: 576px) {
+    .navbar {
+      height: 80px;
+      padding: 0;
+    }
+  
+    .navbar img {
+      height: 70px;
+      width: 60px;
+      margin: 0;
+    }
+  
+    .navbar-text {
+      margin: 0;
+    }
+  
+    .navbar-text p {
+      font-size: 8px;
+    }
+  
+    .navbar h1 {
+      font-size: 33px;
+    }
+  
+    .login-btn {
+      height: 40px;
+      width: 100px;
+    }
+  
+    .login-btn div {
+      font-size: 12px;
+    }
+  
+    .icon-large {
+      font-size: 20px;
+    }
+  
+    .content {
+      height: 450px;
+    }
+  
+    .content .overlay {
+      height: 50%;
+    }
+  
+    .overlay-text {
+      width: 300px;
+    }
+  
+    .text-box {
+      height: 50%;
+      font-size: 14px;
+      padding: 40px 70px;
+    }
+  
+    .explore .row {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .explore-text {
+      order: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 70%;
+      margin: 0;
+      padding: 0;
+    }
+  
+    .position-relative {
+      order: 2;
+    }
+
+    .explore .col-lg-6.position-relative {
+      width: 95% !important;
+      height: 300px !important;
+    }
+  
+    .explore-text h1 {
+      font-size: 20px;
+    }
+  
+    .explore-text p {
+      font-size: 16px;
+    }
+  
+    .about {
+      margin-right: 0;
+    }
+  
+    /* applicationPage */
+    .application-container {
+      overflow-x: hidden;
+    }
+
+    .application-text {
+      padding: 15px;
+    }
+
+
+    .navbar-title {
+      left: 64%;
+    }
+  
+    .backarrow {
+      top: 20px;
+      left: 40px;
+    }
+
+    .note-box {
+      width: 100%;
+      justify-content: space-between;
+    }
+  
+    .application-container h3 {
+      font-size: 20px;
+    }
+  
+    .application-container i {
+      font-size: 24px;
+      margin-right: -15px;
+    }
+  
+    .application-container p {
+      font-size: 16px;
+    }
+  
+    .application-text .heading {
+      font-size: 16px;
+    }
+  
+    .app2 {
+      padding: 10px;
+    }
+
+    .app2 h2 {
+      font-size: 20px;
+    }
+  
+    .year-form p,
+    .study-form p,
+    .disab-form p,
+    .resid-form p,
+    .grad-form p {
+      font-size: 16px;
+    }
+  
+    .year-form input[type=radio],
+    .study-form input[type=radio],
+    .disab-form input[type=radio] {
+      height: 10px;
+      width: 10px;
+    }
+  
+    .year-form label,
+    .study-form label,
+    .disab-form label,
+    .resid-form label {
+      font-size: 14px;
+    }
+  
+    .academic-box p,
+    .campus-box p {
+      font-size: 12px;
+    }
+  
+    .academic-box,
+    .year-form,
+    .disab,
+    .campus-box {
+      margin-top: -10px;
+    }
+  
+    .disab-input {
+      width: 100% !important;
+    }
+  
+    .campus-box {
+      padding: 10px;
+    }
+  
+    .study-form .col-md-6 {
+      display: flex;
+      align-items: start;
+      flex-direction: column;
+    }
+    .study-form .programs{
+      width: 100% !important;
+      margin-bottom: 10px;
+    }
+  
+    .custom-select-trigger span,
+    .custom-select-trigger i {
+      font-size: 14px;
+    }
+
+    .custom-select-options {
+      width: fit-content;
+      margin-left: 15px;
+    }
+
+    .custom-select-options span {
+      font-size: 12px;
+    }
+  
+    .grad-input {
+      width: 100%;
+      margin: 0 0 50px 0;
+    }
+  
+    .link-box {
+      width: 100%;
+      margin: 0;
+    }
+  
+    #upload-button,
+    .back-btn,
+    .submit-btn {
+      display: flex;
+      justify-content: space-evenly;
+      font-size: 20px;
+      width: 160px;
+    }
+  
+    /* loginPage */
+    .login-container {
+      padding: 0;
+    }
+  
+    .icon-box {
+      height: 60px;
+      width: 60px;
+    }
+  
+    .login-card {
+      height: 320px;
+      width: 400px;
+      margin: 0;
+    }
+  
+    .login-card i {
+      font-size: 50px;
+    }
+  
+    .login-card label {
+      font-size: 14px;
+    }
+  
+    .login-card input {
+      height: 30px;
+    }
+  
+    .login-card button[type=submit] {
+      height: 35px;
+      width: 99px;
+      padding: 0;
+    }
+  
+    .back-arrow {
+      top: 90px;
+      left: 40px;
+    }
+
+    /* popUp */
+    .pop-head h3 {
+      font-size: 19px;
+      padding: 5px;
+    }
+    .close {
+      font-size: 15px;
+    }
+    .pop-body p {
+      font-size: 16px;
+      padding: 0;
+    }
+    .confirm-btn {
+      height: 40px;
+      width: 118px;
+      font-size: 19px;
+    }
   }
-  .staff-logout-btn{
-      padding: 2px !important;
-      font-size: 16px !important;
+  @media (max-width: 476px) {
+    .navbar {
+      height: 80px;
+      padding: 0;
+    }
+  
+    .navbar img {
+      height: 50px;
+      width: 40px;
+      margin: 0;
+    }
+  
+    .navbar-text {
+      margin: 0;
+    }
+  
+    .navbar-text p {
+      font-size: 5px;
+    }
+  
+    .navbar h1 {
+      font-size: 25px;
+    }
+  
+    .login-btn {
+      height: 30px;
+      width: 80px;
+    }
+  
+    .login-btn div {
+      font-size: 7px;
+    }
+  
+    .icon-large {
+      font-size: 18px;
+    }
+  
+    .content {
+      height: 400px;
+    }
+  
+    .content .overlay {
+      height: 50%;
+    }
+  
+    .overlay-text {
+      width: 280px;
+    }
+  
+    .text-box {
+      height: 50%;
+      font-size: 13px;
+      padding: 30px 30px;
+    }
+  
+    .explore .row {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .explore-text {
+      order: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80%;
+      margin: 0;
+      padding: 0;
+    }
+  
+    .position-relative {
+      order: 2;
+    }
+
+    .explore .col-lg-6.position-relative {
+      width: 350px;
+    }
+
+    .explore-btn {
+      height: 75px;
+      width: 200px;
+      font-size: 18px;
+    }
+  
+    .explore-text h1 {
+      font-size: 20px;
+    }
+  
+    .explore-text p {
+      font-size: 16px;
+    }
+  
+    .about {
+      margin-right: 0;
+    }
+  
+    /* applicationPage */
+    .navbar-title {
+      left: auto;
+      right: 0;
+    }
+  
+    .backarrow {
+      top: 20px;
+      left: 40px;
+    }
+  
+    .application-container h3 {
+      font-size: 16px;
+      text-align: start;
+    }
+  
+    .application-container i {
+      font-size: 24px;
+      margin-right: -15px;
+    }
+  
+    .application-container p {
+      font-size: 16px;
+    }
+  
+    .application-text .heading {
+      font-size: 16px;
+    }
+  
+    .app2 {
+      padding: 10px;
+    }
+  
+    .year-form p,
+    .study-form p,
+    .disab-form p,
+    .resid-form p,
+    .grad-form p {
+      font-size: 20px;
+    }
+  
+    .year-form input[type=radio],
+    .study-form input[type=radio],
+    .disab-form input[type=radio] {
+      height: 17px;
+      width: 17px;
+    }
+  
+    .year-form label,
+    .study-form label,
+    .disab-form label,
+    .resid-form label {
+      font-size: 18px;
+    }
+  
+    .academic-box {
+      padding: 10px;
+    }
+  
+    .academic-box p,
+    .campus-box p {
+      font-size: 16px;
+    }
+  
+    .academic-box,
+    .year-form,
+    .disab,
+    .campus-box {
+      margin-top: -10px;
+    }
+  
+    .disab-input {
+      width: 450px;
+    }
+  
+    .campus-box {
+      padding: 10px;
+    }
+  
+    .col-md-6 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .custom-select-trigger {
+      width: 180px !important;
+    }
+  
+    .custom-select-options span,
+    .custom-select-trigger i {
+      font-size: 14px;
+    }
+  
+    .grad-input {
+      width: 100%;
+      margin: 0 0 50px 0;
+    }
+  
+    .link-box {
+      width: 100%;
+    }
+  
+    #upload-button,
+    .back-btn,
+    .submit-btn {
+      display: flex;
+      justify-content: space-evenly;
+      font-size: 20px;
+      width: 160px;
+    }
+  
+    /* loginPage */
+    .login-container {
+      padding: 0;
+    }
+  
+    .icon-box {
+      height: 60px;
+      width: 60px;
+    }
+  
+    .login-card {
+      height: 320px;
+      width: 400px;
+      margin: 0;
+    }
+  
+    .login-card i {
+      font-size: 50px;
+    }
+  
+    .login-card label {
+      font-size: 14px;
+    }
+  
+    .login-card input {
+      height: 30px;
+    }
+  
+    .login-card button[type=submit] {
+      height: 35px;
+      width: 99px;
+      padding: 0;
+    }
+  
+    .back-arrow {
+      top: 90px;
+      left: 40px;
+    }
+
+    /* popUp */
+    .pop-head h3 {
+      font-size: 18px;
+      padding: 5px;
+    }
+    .successclose  {
+      font-size: 14px;
+    }
+    .pop-body p {
+      font-size: 15px;
+      padding: 0;
+    }
+    .confirm-btn {
+      height: 33px;
+      width: 110px;
+      font-size: 15px;
+    }
   }
-  .staff-nav{
-      height: 110px !important;
+
+  @media screen and (max-width: 400px) {
+    .navbar{
+      height: 100px !important;
+    }
+    .navbar-text p {
+      font-size: 7px;
+    }
+    .login-btn div {
+      font-size: 9px;
+    }
+    .pop-head h3 {
+      font-size: 17px;
+      padding: 5px;
+    }
+    .close {
+      font-size: 13px;
+    }
+    .pop-body p {
+      font-size: 14px;
+      padding: 0;
+    }
+    .confirm-btn {
+      height: 30px;
+      width: 100px;
+      font-size: 14px;
+      margin: 0;
+    }
   }
+
+
+  /* Staff */
+
+  @media screen and (max-width:992px) {
+    .sub-head{
+        width: 90%;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 15px;
+    }
+    .staff-nav-data{
+        font-size: 16px !important;
+    }
+    .staff-logout-btn{
+        padding: 2px !important;
+        font-size: 16px !important;
+    }
+    .staff-nav{
+        height: 110px !important;
+    }
 }
 @media screen and (max-width:661px) {
-  
-  .staff-nav{
-      height: 160px !important;
-  }
+    
+    .staff-nav{
+        height: 160px !important;
+    }
 }
 @media screen and (max-width:650px) {
-  .staff-head-content{
-      flex-direction: column;
-      justify-content: center !important;
-      gap: 8px;
-  }
-  .input-search{
-      width: 300px;
-  }
-  .input-search i{
-      right: 5px;
+    .staff-head-content{
+        flex-direction: column;
+        justify-content: center !important;
+        gap: 8px;
+    }
+    .input-search{
+        width: 300px;
+    }
+    .input-search i{
+        right: 5px;
 }
 }
 @media screen and (max-width:600px) {
-  .sub-head-right{
-      gap: 0 !important;
-      justify-content: space-between !important;
-      width: 100%;
-  }
-  .staff-checkbox{
-      gap: 4px !important ;
-  }
+    .sub-head-right{
+        gap: 0 !important;
+        justify-content: space-between !important;
+        width: 100%;
+    }
+    .staff-checkbox{
+        gap: 4px !important ;
+    }
 }
 @media screen and (max-width:500px) {
-  .sub-head-right{
-      gap: 0 !important;
-      justify-content: space-between !important;
-      width: 100%;
-      flex-direction: column;
-  }
-  .sub-head-left{
-      width: 290px;
-  }
+    .sub-head-right{
+        gap: 0 !important;
+        justify-content: space-between !important;
+        width: 100%;
+        flex-direction: column;
+    }
+    .sub-head-left{
+        width: 290px;
+    }
 }
 
 /* Dashboard */
 
 
 @media screen and (max-width:1200px) {
-.d-left-1,
-.d-left-2{
-    padding: 20px 20px;
-}
-.sidebar {
-    width: 250px; 
+  .d-left-1,
+  .d-left-2{
+      padding: 20px 20px;
   }
-  .profile-btn{
-    width: 200px;
-  }
-  .modal{
-    --bs-modal-width: 90% !important;
-  }
+  .sidebar {
+      width: 250px; 
+    }
+    .profile-btn{
+      width: 200px;
+    }
+    .modal{
+      --bs-modal-width: 90% !important;
+    }
 }
 
 @media screen and (max-width:992px) {
-.dashboard-section {
-    flex-direction: column;
-  }
-  .sidebar {
-    width: 100%; 
-    padding: 15px 30px;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center !important;
-  }
-  .sidebar-btns{
-    flex-direction: row;
-    margin: 0;
-    gap: 20px;
-  }
+  .dashboard-section {
+      flex-direction: column;
+    }
+    .sidebar {
+      width: 100%; 
+      padding: 15px 30px;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center !important;
+    }
+    .sidebar-btns{
+      flex-direction: row;
+      margin: 0;
+      gap: 20px;
+    }
 }
 
 @media screen and (max-width:768px) {
-.dashboard-boxes{
-    flex-direction: column;
-}
-.right-box{
-    height: 400px;
-}
-.exp-about-boxes{
-    flex-direction: column !important;
-}
-.explore,
-.explore-img{
-    width: 100%;
-}
-.exp-about-box-2{
-    flex-direction: column-reverse !important;
-}
-.d-left-1 p,
-.d-left-2 p{
-    font-size: 20px !important;
-    width: 100% !important;
-    text-align: center;
-}
+  .dashboard-boxes{
+      flex-direction: column;
+  }
+  .right-box{
+      height: 400px;
+  }
+  .exp-about-boxes{
+      flex-direction: column !important;
+  }
+  .explore,
+  .explore-img{
+      width: 100%;
+  }
+  .exp-about-box-2{
+      flex-direction: column-reverse !important;
+  }
+  .d-left-1 p,
+  .d-left-2 p{
+      font-size: 20px !important;
+      width: 100% !important;
+      text-align: center;
+  }
 
 .profile-header{
-  padding:20px 30px 20px 30px;
+    padding:20px 30px 20px 30px;
 }
 .profile-modal-body{
-display: none;
-padding:0px 30px 0px 30px;
+  display: none;
+  padding:0px 30px 0px 30px;
 }
 
 .profile-modal-body-1{
-display: block;
-color: white;
-margin-top: 20px !important;
+  display: block;
+  color: white;
+  margin-top: 20px !important;
 }
 .profile-modal-1-right div{
-color: white;
-margin: 0 !important;
-padding: 0 !important;
-gap: 30px;
-width: 100%;
-justify-content: unset !important;
+  color: white;
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 30px;
+  width: 100%;
+  justify-content: unset !important;
 }
 .profile-modal-body-1 div h4{
-font-size: 15px;
-width: 110px;
+  font-size: 15px;
+  width: 110px;
 }
 .detail-head-responsive{
-margin-bottom: 15px !important;
-font-weight: 600;
+  margin-bottom: 15px !important;
+  font-weight: 600;
 }
 
 
@@ -1328,29 +1295,183 @@ font-weight: 600;
 }
 
 @media screen and (max-width:577px) {
-.exp-about-box-2{
-    flex-direction: column !important;
-}
+  .exp-about-box-2{
+      flex-direction: column !important;
+  }
 }
 
 @media screen and (max-width:550px) {
-  .sidebar {
-    width: 100%; 
-    padding: 15px 30px;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .profile-modal-body-1 div{
-    color: white;
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100%;
-    justify-content: unset !important;
-  }
+    .sidebar {
+      width: 100%; 
+      padding: 15px 30px;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .profile-modal-body-1 div{
+      color: white;
+      margin: 0 !important;
+      padding: 0 !important;
+      width: 100%;
+      justify-content: unset !important;
+    }
 }
 
 @media screen and (max-width:420px) {
-.sidebar-btns{
-    flex-direction: column;
-  }   
+  .sidebar-btns{
+      flex-direction: column;
+    }   
 }
+
+@media screen and (max-width:320px){
+
+  .d-left-1{
+
+    text-align: center;
+  }
+
+  .right-box h2 {
+
+    font-family: Inria Sans;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 47.96px;
+    text-align: center;
+  }
+  
+
+
+}
+
+@media screen and (max-width:172px){
+
+  .right-box h2 {
+
+    font-family: Inria Sans;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 47.96px;
+    text-align: center;
+  }
+
+  .explore h2 {
+    font-family: Inria Sans;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 47.96px;
+    text-align: left;
+}
+
+}
+
+@media screen and (max-width:299px){
+
+  .navbar-title {
+
+    margin-left: 1.5em;
+
+  }
+
+
+}
+
+@media screen and (max-width:330px){
+
+  .edit-mobile{
+
+    position: relative;
+    right: 10em;
+    top: 5em;
+    margin: 0 auto;
+  }
+
+  .details-text{
+
+    font-size: 15px;
+    display: flex;
+  }
+
+  
+}
+
+@media screen and (max-width:409px){
+
+  .edit-mobile{
+
+    position: relative;
+    right: 10em;
+    top: 5em;
+    margin: 0 auto;
+  }
+
+  .details-text{
+
+    font-size: 15px;
+    display: flex;
+  }
+
+ 
+  .pop-body label{
+    display: flex;
+    
+  }
+
+  .pop-body input{
+
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 0em;
+    right: 1em;
+    margin-left: 8px;
+    color: rgb(93, 104, 100);
+  }
+ 
+}
+
+
+
+
+
+@media screen and (max-width: 335px) {
+/* 267 */
+  .details-text{
+
+    display: block;
+    font-size: 13px;
+    display: flex;
+  }
+
+  .navbar-title{
+
+    position: relative;
+    left: 1.8em;
+  }
+
+  .input-email{
+
+    position: relative;
+    right:3em;
+  }
+
+  .input-Phone-Number{
+
+    position: relative;
+    right:1.4em;
+
+  }
+ 
+  .pop-head h3{
+
+    position: relative;
+    right: 3em;
+    top:4px;
+    display: flex;
+  }
+
+  
+}
+
+
+
+
