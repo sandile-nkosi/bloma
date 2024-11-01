@@ -17,7 +17,8 @@ const ApplicationSchema = new mongoose.Schema(
     academicYear: Number,
     applicationYear: Number,
     comments: {
-      type: String
+      type: String,
+      default: "",
     },
     typeOfStudy: {
       type: String,

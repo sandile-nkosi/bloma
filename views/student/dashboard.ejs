@@ -61,11 +61,11 @@
             <h2>Notifications</h2>
           </div>
          
-        
+        <% if (studentApplication) {%>
           <p style="background-color: #BFBFBF;">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quisquam, expedita itaque saepe temporibus veniam! Ex voluptatibus minima quos facilis numquam et excepturi quas aut debitis, veniam ipsam, est velit.
+            <%= studentApplication.comments %>
           </p>
-          
+        <% } %>
             
           
 
