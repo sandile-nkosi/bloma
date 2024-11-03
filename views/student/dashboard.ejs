@@ -45,6 +45,12 @@
           </p>
           <% if(student.applications ==3) {%>
             <button disabled>Already Applied</button>
+          <% } else if(student.applications ==0) {%>
+            <button><a href="/residences">Add 1st Residence Choice</a></button>
+          <% } else if(student.applications ==1) {%>
+            <button><a href="/residences">Add 2nd Residence Choice</a></button>
+          <% } else if(student.applications ==2) {%>
+            <button><a href="/residences">Add 3rd Residence Choice</a></button>  
           <% }else if(!student.applied) { %>
             <button><a href="/application/apply">Complete Application Details</a></button>
           <% }else { %>
@@ -223,25 +229,41 @@
             <h4>Surname:</h4>
             <p class="details-text"><%= student.lastName %></p>
           </div>
-          <div>
-            <h4>E-mail:</h4>
-            <input type="text" value="<%= student.email %>" class="details-edit" id="details-edit-para" hidden>
-            <p class="details-text" id="email-para"><%= student.email %></p>
-            <p class="edit" id="email-edit">Edit</p>
-          </div>
-          <div>
-            <h4>Phone Number:</h4>
-            <input type="text" value="<%= student.phone %>" class="details-edit" hidden>
-            <p class="details-text" id="phone-para"><%= student.phone %></p>
-            <p class="edit" id="phone-edit">Edit</p>
-          </div>
-        </div>
-        <div class="documents">
-          <% if (student.applied == true) {%>
-            <a href="<%= studentApplication.documentPath %>" target="_blank">View Academic Record</a>
-          <% }else { %>
-            <h4>No Documents uploaded</h4>
-          <% } %>
+          <form action="/student/update" method="post" enctype="multipart/form-data">
+            <div>
+              <h4>E-mail:</h4>
+              <input type="text" placeholder="<%= student.email %>" class="details-edit" id="email-input" name="email" hidden>
+              <p class="details-text" id="email-para"><%= student.email %></p>
+              
+            </div>
+            <div>
+              <h4>Phone Number:</h4>
+              <input type="text" placeholder="<%= student.phone %>" class="details-edit" id="phone-input" name="phone" hidden>
+              <p class="details-text" id="phone-para"><%= student.phone %></p>
+              
+            </div>
+            <div class="documents">
+              <% if (studentApplication.
+              residenceOneStatus == 'Rejected' || studentApplication.
+              residenceTwoStatus == 'Rejected' || studentApplication.
+              residenceThreeStatus == 'Rejected') {%>
+                  <a href="<%= studentApplication.documentPath %>" target="_blank">View Academic Record</a>
+                  <br>
+                <div>
+                  <p>
+                    <input type="file" name="academicRecord" accept=".pdf">
+                  </p>
+                </div>
+                
+              <% }else { %>
+                <h4>No Documents uploaded</h4>
+              <% } %>
+            </div>
+            <div id="buttons">
+              <button type="button" id="edit">Edit</button>
+              <button type="submit">Save changes</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

@@ -1,16 +1,29 @@
-const emailEditElement = document.getElementById('email-edit');
-const phoneEditElement = document.getElementById('phone-edit');
+const editBtnElement = document.getElementById('edit');
+const emailInputElement = document.getElementById('email-input');
+const phoneInputElement = document.getElementById('phone-input');
+const noDocsHeader = document.getElementById('no-documents');
+const uploadElement = document.getElementById('upload-file');
+
 const emailPara = document.getElementById('email-para');
 const phonePara = document.getElementById('phone-para');
 
-const detailsEditEmail = document.getElementById('details-edit-para');
-
-
-function editEmail(){
+function allowEdit(){
+  emailInputElement.removeAttribute('hidden');
   emailPara.style.display = 'none';
-  detailsEditEmail.removeAttribute('hidden');
-};
+  phoneInputElement.removeAttribute('hidden');
+  phonePara.style.display = 'none';
+  noDocsHeader.style.display = 'none';
+  uploadElement.removeAttribute('hidden');
+}
 
-emailEditElement.addEventListener('click', editEmail);
+
+
+
+
+
+
+editBtnElement.addEventListener('click', allowEdit);
+
+
 
 

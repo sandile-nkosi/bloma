@@ -30,29 +30,29 @@ document.querySelector(".edit").onclick = function() {
 
 
 
-  // removes the modal in the background......
-// document.getElementById("submitBtn").onclick = function() {
-//   const modal = document.getElementById("confirmModal");
-//   modal.classList.add("show"); // Add the class to show modal
-// };
+  //removes the modal in the background......
+document.getElementById("submitBtn").onclick = function() {
+  const modal = document.getElementById("confirmModal");
+  modal.classList.add("show"); // Add the class to show modal
+};
 
-// document.getElementById("confirmBtn").onclick = function() {
-//   const successModal = document.getElementById("successModal");
-//   successModal.classList.add("show"); // Show success modal
-//   document.getElementById("confirmModal").classList.remove("show"); // Hide confirm modal
-// };
+document.getElementById("confirmBtn").onclick = function() {
+  const successModal = document.getElementById("successModal");
+  successModal.classList.add("show"); // Show success modal
+  document.getElementById("confirmModal").classList.remove("show"); // Hide confirm modal
+};
 
-// Adjust close functionality
-// var closeButtons = document.getElementsByClassName("close");
-// for (var i = 0; i < closeButtons.length; i++) {
-//   closeButtons[i].onclick = function() {
-//       const modal = this.closest('.modal');
-//       modal.classList.remove("show"); // Remove the class to hide modal
-//   };
-// }
+//Adjust close functionality
+var closeButtons = document.getElementsByClassName("close");
+for (var i = 0; i < closeButtons.length; i++) {
+  closeButtons[i].onclick = function() {
+      const modal = this.closest('.modal');
+      modal.classList.remove("show"); // Remove the class to hide modal
+  };
+}
 
 
-// edit button for mobile view. 
+//edit button for mobile view. 
 
 document.querySelector(".edit-mobile").onclick = function() {
   document.getElementById("confirmModal").style.display = "block";

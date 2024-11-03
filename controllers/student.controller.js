@@ -82,9 +82,27 @@ async function login(req, res, next) {
 
 async function updateStudent(req, res) {
   const studentId = req.session.user.id;
-  const studentData = req.body;
-  const email = studentData.email.toLowerCase();
-  const phone = studentData.phone;
+  const currentStudent = await Student.findOne({ _id: studentId }).exec();
+  const studentApplication = await Application.findOne({
+    createdBy: studentId,
+  });
+  let email = req.body.email.toLowerCase();
+  let phone = req.body.phone;
+  let academicRecord = req.file
+
+  if(!email){
+    email = currentStudent.email;
+  }
+
+  if(!phone){
+    phone = currentStudent.phone;
+  }
+
+  if(!academicRecord){
+    documentPath = studentApplication.documentPath;
+  }else{
+    documentPath = academicRecord.path;
+  }
 
   try {
     await Student.findOneAndUpdate(
@@ -102,6 +120,22 @@ async function updateStudent(req, res) {
         runValidators: true,
       }
     );
+
+    await Application.findOneAndUpdate(
+      {
+        createdBy: studentId,
+      },
+      {
+        $set: {
+          documentPath: documentPath
+        },
+      },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+
     res.redirect("/student/dashboard");
   } catch (err) {
     console.log(err);

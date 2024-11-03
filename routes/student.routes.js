@@ -17,7 +17,7 @@ router.get('/update-password/:email/:otp', studentController.getUpdatePassword);
 
 router.post('/login', studentController.login);
 router.post('/register', avatarUpload,studentController.register);
-router.patch('/update', studentController.updateStudent);
+router.post('/update', documentUpload, studentController.updateStudent);
 router.post('/forgot-password/otp', studentController.sendOtp);
 router.post('/update-password/:email/:otp', studentController.updatePassword);
 
