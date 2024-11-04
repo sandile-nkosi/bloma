@@ -45,14 +45,14 @@
           </p>
           <% if(student.applications ==3) {%>
             <button disabled>Already Applied</button>
-          <% } else if(student.applications ==0) {%>
-            <button><a href="/residences">Add 1st Residence Choice</a></button>
+          <% } else if(student.applications ==0 && !student.applied) {%>
+            <button><a href="/application/apply">Complete Application Details</a></button>
           <% } else if(student.applications ==1) {%>
             <button><a href="/residences">Add 2nd Residence Choice</a></button>
           <% } else if(student.applications ==2) {%>
             <button><a href="/residences">Add 3rd Residence Choice</a></button>  
-          <% }else if(!student.applied) { %>
-            <button><a href="/application/apply">Complete Application Details</a></button>
+          <% }else if(student.applied && student.applications ==0) { %>
+            <button><a href="/application/apply">Add 1st Residence Choice</a></button>
           <% }else { %>
             <button><a href="/residences">New Application</a></button>
           <% } %>
