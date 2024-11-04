@@ -239,18 +239,17 @@
               
             </div>
             <div class="documents">
-              <% if (studentApplication.
-              residenceOneStatus == 'Rejected' || studentApplication.
-              residenceTwoStatus == 'Rejected' || studentApplication.
-              residenceThreeStatus == 'Rejected') {%>
+              <% if (student.applied) {%>
+                <% if (studentApplication. residenceOneStatus=='Rejected' || studentApplication. residenceTwoStatus=='Rejected' ||
+                  studentApplication. residenceThreeStatus=='Rejected') {%>
                   <a href="<%= studentApplication.documentPath %>" target="_blank">View Academic Record</a>
                   <br>
-                <div>
-                  <p>
-                    <input type="file" name="academicRecord" accept=".pdf">
-                  </p>
-                </div>
-                
+                  <div>
+                    <p>
+                      <input type="file" name="academicRecord" accept=".pdf">
+                    </p>
+                  </div>
+                <% } %>
               <% }else { %>
                 <h4>No Documents uploaded</h4>
               <% } %>
