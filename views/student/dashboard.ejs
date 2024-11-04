@@ -55,20 +55,16 @@
       <div class="right-box">
         
         <div class = "parent-cont">
+              <div class="h2-cont"><h2 style="text-align: center; font-family: Inria Sans; font-size: 40px; font-weight: 400;">Notifications</h2></div>
+          
 
-          <div class="notification-and-para">
-
-            <h2>Notifications</h2>
-          </div>
+            <!--<h2>Notifications</h2>-->
+            <% if (studentApplication) {%>
+              <p style="background-color: #BFBFBF; text-align: center;">
+                <%= studentApplication.comments %>
+              </p>
+              <% } %>
          
-        
-          <p style="background-color: #BFBFBF;">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quisquam, expedita itaque saepe temporibus veniam! Ex voluptatibus minima quos facilis numquam et excepturi quas aut debitis, veniam ipsam, est velit.
-          </p>
-          
-            
-          
-
         </div>
         
       </div>
