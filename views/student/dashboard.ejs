@@ -61,20 +61,16 @@
       <div class="right-box">
         
         <div class = "parent-cont">
-
-          <div class="notification-and-para">
-
-            <h2>Notifications</h2>
-          </div>
-         
-        <% if (studentApplication) {%>
-          <p style="background-color: #BFBFBF;">
-            <%= studentApplication.comments %>
-          </p>
-        <% } %>
-            
+              <div class="h2-cont"><h2 style="text-align: center; font-family: Inria Sans; font-size: 40px; font-weight: 400;">Notifications</h2></div>
           
 
+            <!--<h2>Notifications</h2>-->
+            <% if (studentApplication) {%>
+              <p style="background-color: #BFBFBF; text-align: center;">
+                <%= studentApplication.comments %>
+              </p>
+              <% } %>
+         
         </div>
         
       </div>

@@ -125,24 +125,45 @@
   justify-content: center;
   border-radius: 11px;
 }
-.right-box div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+.right-box .parent-cont {
   width: 100%;
-  height: 70px;
-  background-color: #d9d9d9;
-  border-top-left-radius: 11px;
-  border-top-right-radius: 11px;
+  display: flex;
+  flex-direction: column;
+  /* Stacks elements vertically */
+  align-items: center;
+  /* Centers elements horizontally */
+ 
 }
-.right-box h2 {
-  font-family: Inria Sans;
+
+.parent-cont h2 {
+  font-family: 'Inria Sans';
   font-size: 40px;
   font-weight: 400;
-  line-height: 47.96px;
-  text-align: left;
-  position: relative;
-  left: 5em;
+  margin: 0;
+  /* Removes default margin */
+  text-align: center;
+  /* Ensures text alignment in the center */
+}
+.h2-cont{
+  background-color: #d9d9d9;
+  width: 100%;
+  height: 70px;
+  border-top-left-radius: 11px;
+  border-top-right-radius: 11px;
+  padding-top: 10px;
+}
+
+.right-box p {
+  font-size: 30px;
+  text-align: center;
+  margin-top: 20px;
+  /* Adjusted for spacing under h2 */
+  width: 80%;
+  /* Set width for better alignment */
+  background-color: #d9d9d9;
+  padding: 10px;
+  border-radius: 8px;
 }
 
 .explore {
@@ -258,16 +279,5 @@ text-align: left;
   display: none;
 }
 
-.right-box p{
-  position: relative;
-  top: 12em;
-  right: 5em;
-  font-size: 20px;
-  text-align: center;
-  margin-top: 60px;
-  height: 350px;
-  background-color: #d9d9d9;
-  
 
-}
  
